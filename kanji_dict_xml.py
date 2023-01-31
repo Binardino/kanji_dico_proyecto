@@ -12,4 +12,20 @@ for element in root:
     if element.tag == 'character':
         #get kanji key as entry
         kanji = element.find('literal').text
-        print(kanji)
+        print('kanji' : kanji)
+        
+        #get sublevel meanings
+        jlpt_level   = element.find('jlpt').text
+        stroke_count = element.find('stroke_count').text
+        radical      = element.find('radical').text
+        meaning      = element.find('meaning').text
+        reading_on   = element.find('meaning').text
+        reading_kun  = element.find('meaning').text
+        
+        #Add entry to kanji_dict
+        kanji_dict[kanji] = {'meanings'     : meanings,
+                             'jlpt_level'   : jlpt_level,
+                             'stroke_count' : stroke_count,
+                             'radicals' 	: radicals,
+
+                             }
