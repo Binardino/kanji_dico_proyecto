@@ -7,45 +7,42 @@ root = tree.getroot()
 #create own dict
 kanji_dict = {}
 
-for element in root:
-    #check if element is a kanji
-    if element.tag == 'character':
-        #get kanji key as entry
-        kanji = element.find('literal').text
-        print('kanji', kanji)
-        
-        
-        if element.tag == 'misc/jlpt':
-        #not all kanji have JLPT level defined
-            jlpt_level   = element.find('misc/jlpt').text
-        else:
-            jlpt_level   = None
-        stroke_count = element.find('misc/stroke_count').text
-        #fetching radical value from classical kanji numerotation
-        radical      = element.find('radical/rad_value').text
+#iteration through kanji in character beacon
+for kanji in root.findall('character'):
+    #get kanji symbol
+    symbol = kanji.find('literal').text
+    print('kanji', symbol)
+    
+    #not all kanji have JLPT level defined
+    jlpt_level   = kanji.find('misc/jlpt').text if kanji.tag == 'misc/jlpt' else None
+    stroke_count = kanji.find('misc/stroke_count').text
+    #fetching radical value from classical kanji numerotation
+    radical      = kanji.find('radical/rad_value').text
 
+    #instantiate variables
+    meanings = []
+    reading_kun = []
+    reading_on = []
+    
+    #fetching all meanings of kanji to append to list
+    for meaning in kanji.findall('reading_meaning/rmgroup/meaning'):
+        meanings.append(meaning.text)
         
-        #instantiate variables
-        meanings = []
-        pronunciations = {}
-
-        #get sublevel keys
-        # for child in element:
-                        # if child.tag == 'reading_meaning':
-            #     for subchild in child:
-            #         if subchild.tag == 'rmgroup':
-            #     meaning      = child.find('meaning').text
-            #     if == r_type="ja_kun":
-            #         reading_kun  = element.find('meaning').text
-            #     elif == r_type="ja_on":
-            #         reading_on   = element.find('meaning').text
-            
+    #fetching all pronunciations - split in kun-yomi & on-yomi - to append to relevant list        
+    for pronunciation in kanji.findall('reading_meaning/rmgroup/reading'):
+        if pronunciation.attrib['r_type'] == 'ja_kun':
+            print('ja_on',pronunciation.text)
+            reading_kun.append(pronunciation.text)
+        elif pronunciation.attrib['r_type'] == 'ja_on':
+            reading_on.append(pronunciation.text)
+            # reading_kun[pronunciation] = pronunciation
+            print(reading_kun)
         
         #Add entry to kanji_dict
-        kanji_dict[kanji] = {'meanings'     : meanings,
+        kanji_dict[symbol] = {'meanings'     : meanings,
                              'jlpt_level'   : jlpt_level,
                              'stroke_count' : stroke_count,
-                             'radicals' 	: radical
-                             # 'reading_kun'  : reading_kun,
-                             # 'reading_on'   : reading_on
+                             'radicals' 	: radical,
+                             'reading_kun' : reading_kun,
+                              'reading_on'   : reading_on
                              }
