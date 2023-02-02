@@ -15,3 +15,5 @@ df_kanji['radicals'] = df_kanji['radicals'].astype(int)
 #merge kanji dictionary with radicals
 df_merged = pd.merge(df_kanji.reset_index(), df_radicals, how='left', left_on='radicals', right_on='No.')
 
+#dict of 214 radicals
+dict_radical = df_merged[['Radical (variants)', 'index']].to_dict(orient='records')
