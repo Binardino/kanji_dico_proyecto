@@ -7,6 +7,8 @@ root = tree.getroot()
 #create own dict
 kanji_dict = {}
 
+radical_number = []
+
 #iteration through kanji in character beacon
 for kanji in root.findall('character'):
     #get kanji symbol
@@ -18,6 +20,8 @@ for kanji in root.findall('character'):
     stroke_count = kanji.find('misc/stroke_count').text
     #fetching radical value from classical kanji numerotation
     radical      = kanji.find('radical/rad_value').text
+    
+    radical_number.append(kanji.find('radical/rad_value').text)
 
     #instantiate variables
     meanings = []
