@@ -9,6 +9,7 @@ kanji_dict = {}
 
 radical_number = []
 
+print("parsing Kanji XML doc")
 #iteration through kanji in character beacon
 for kanji in root.findall('character'):
     #get kanji symbol
@@ -50,3 +51,9 @@ for kanji in root.findall('character'):
                              'reading_kun' : reading_kun,
                               'reading_on'   : reading_on
                              }
+        
+print("parsing XML doc done !")
+
+print("exporting copy in csv")
+df_kanji = pd.DataFrame.from_dict(kanji_dict, orient='index')
+df_kanji.to_csv("df_kanji.csv", index=False)
