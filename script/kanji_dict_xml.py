@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import pandas as pd
 
 #read raw kanji XML document
 tree = ET.parse('../data/kanjidic2.xml')
