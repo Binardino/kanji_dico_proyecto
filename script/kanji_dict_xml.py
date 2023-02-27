@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 
 #read raw kanji XML document
-tree = ET.parse('kanjidic2.xml')
+tree = ET.parse('../data/kanjidic2.xml')
 root = tree.getroot()
 
 #create own dict
@@ -56,4 +56,4 @@ print("parsing XML doc done !")
 
 print("exporting copy in csv")
 df_kanji = pd.DataFrame.from_dict(kanji_dict, orient='index')
-df_kanji.to_csv("df_kanji.csv", index=False)
+df_kanji.to_csv("../data/df_kanji.csv", index=False)
