@@ -1,6 +1,17 @@
 import xml.etree.ElementTree as ET
 import pandas as pd
 
+#define function
+def get_key(meaning):
+    for key, value in kanji_dict.items():
+        if meaning in value['meanings']:
+            print(f"""-----------------------------
+                  Kanji for {meaning} is {key}""")
+            print(f'Kanji has the following info : {kanji_dict[key]}')
+            
+        else : "kanji not found"
+
+
 #read raw kanji XML document
 tree = ET.parse('../data/kanjidic2.xml')
 root = tree.getroot()
@@ -59,11 +70,6 @@ print("exporting copy in csv")
 df_kanji = pd.DataFrame.from_dict(kanji_dict, orient='index')
 df_kanji.to_csv("../data/df_kanji.csv", index=False)
 
-def get_key(meaning):
-    for key, value in kanji_dict.items():
-        if meaning in value['meanings']:
-            return print(key, kanji_dict[key])
- 
-    return "key doesn't exist"
-
+#%%
+print('input needed kanji')
 print(get_key('great'))
