@@ -58,3 +58,12 @@ print("parsing XML doc done !")
 print("exporting copy in csv")
 df_kanji = pd.DataFrame.from_dict(kanji_dict, orient='index')
 df_kanji.to_csv("../data/df_kanji.csv", index=False)
+
+def get_key(val):
+    for key, value in kanji_dict.items():
+        if val == value:
+            return key
+ 
+    return "key doesn't exist"
+
+get_key('meanings')
