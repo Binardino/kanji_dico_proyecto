@@ -59,11 +59,11 @@ print("exporting copy in csv")
 df_kanji = pd.DataFrame.from_dict(kanji_dict, orient='index')
 df_kanji.to_csv("../data/df_kanji.csv", index=False)
 
-def get_key(val):
+def get_key(meaning):
     for key, value in kanji_dict.items():
-        if val == value:
-            return key
+        if meaning in value['meanings']:
+            return print(key, kanji_dict[key])
  
     return "key doesn't exist"
 
-get_key('meanings')
+print(get_key('great'))
