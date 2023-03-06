@@ -10,7 +10,8 @@ df_radicals = pd.read_html('https://en.wikipedia.org/wiki/List_of_kanji_radicals
 # -> dfs to be merged
 df_meaning_tidy = pd.read_html('https://en.wikipedia.org/wiki/List_of_kanji_radicals_by_frequency')[2]
 
-df_kanji = pd.DataFrame.from_dict(kanji_dict, orient='index')
+print('fetching df_kanji from XML doc')
+df_kanji = pd.DataFrame.from_dict('../data/df_kanji.csv', orient='index')
 
 df_kanji['radicals'] = df_kanji['radicals'].astype(int)
 
