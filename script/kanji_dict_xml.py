@@ -9,6 +9,20 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # Create a logger object
 logger = logging.getLogger(__name__)
 #%%
+"""
+XML document is inconsistent & nodes are often missing
+
+JMdict, KANJIDIC2, and KANA dictionaries all contain optional elements.
+
+Creating those 2 functions to avoid NoneType error if the node is not present for a particular kanji entry
+
+Avoid repeating try & except OR if statement for each entry
+"""
+
+def get_text(node, default=None):
+    """Return node.text safely with a default None output."""
+    return node.text if node is not None else default
+
 #define function
 def get_key(meaning):
     for key, value in kanji_dict.items():
