@@ -23,6 +23,11 @@ def get_text(node, default=None):
     """Return node.text safely with a default None output."""
     return node.text if node is not None else default
 
+def get_all_text(nodes):
+    """Return all .text values from a list of nodes.
+       Avoid repeating same n.text for n in X loop for each kanji entry"""
+    return [n.text for n in nodes if n.text is not None]
+
 #define function
 def get_key(meaning):
     for key, value in kanji_dict.items():
