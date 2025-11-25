@@ -1,6 +1,14 @@
+import logging
 import xml.etree.ElementTree as ET
 import pandas as pd
+import json
 
+#logging config
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+# Create a logger object
+logger = logging.getLogger(__name__)
+#%%
 #define function
 def get_key(meaning):
     for key, value in kanji_dict.items():
