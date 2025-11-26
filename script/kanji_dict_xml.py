@@ -19,8 +19,19 @@ Creating those 2 functions to avoid NoneType error if the node is not present fo
 Avoid repeating try & except OR if statement for each entry
 """
 
-def get_text(node, default=None):
-    """Return node.text safely with a default None output."""
+def get_text(parent : Optional[ET.element], tag:str, node, default=None) -> Optional[str]:
+    """Return node.text safely with a default None output.
+       Lookup inside a parent element
+       
+       - Handles parent = None
+       - Handles missing subtag
+       - Handles missing .text
+    """
+    
+    if parent is None:
+        return default
+    node = parent.find(tag)
+
     return node.text if node is not None else default
 
 def get_all_text(nodes):
