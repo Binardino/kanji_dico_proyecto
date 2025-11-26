@@ -39,6 +39,24 @@ def kanji_XML_parser_dic2(xml_path):
     #create own dict
     kanji_dict = {}
     
+    logging.info("Starting parsing Loop : Kanji XML doc")
+    
+    #iteration through kanji in character beacon
+    for kanji in root.findall('character'):
+        #get kanji symbol
+        literal = kanji.find('literal').text
+        logging.info(f"Processing kanji: {literal}")
+        
+        #codepoints fetching
+        #codepoints store list of Unicode values ie. Unicode hex | Japanese JIS | variants
+        codepoints = {cp.get('cp_type') : get_text(cp) for cp in kanji.findall("codepoint.cp_value")} 
+        
+        #radicals
+        #fetching radical value from classical kanji numerotation - range 1 to 214
+        #various classifications (classical, Shibano "JIS Kanwa Jiten", nelson_c...) 
+        #stored in rad_type attribute
+        radicals   = {rad.get('rad_type') : get_text(rad) for rad in kanji.findall("radical/rad_value")} 
+        
 #define function
 def get_key(meaning):
     for key, value in kanji_dict.items():
