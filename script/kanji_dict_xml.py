@@ -57,6 +57,41 @@ def kanji_XML_parser_dic2(xml_path):
         #stored in rad_type attribute
         radicals   = {rad.get('rad_type') : get_text(rad) for rad in kanji.findall("radical/rad_value")} 
         
+        #multiple readings & meanings for each kanji
+        readings_on  = []
+        readings_kun = []
+        readings_ch  = []
+        readings_kr  = []
+        meanings     = []
+        
+        #fetching all pronunciations - split in kun-yomi & on-yomi - to append to relevant list        
+        for readings in kanji.findall('reading_meaning/rmgroup/reading'):
+            if readings.attrib['r_type'] == 'ja_kun':
+                readings_kun.append(readings.text)
+                print('ja_kun',readings_kun)
+                
+            elif readings.attrib['r_type'] == 'ja_on':
+                readings_on.append(readings.text)
+                # reading_kun[pronunciation] = pronunciation
+                print('ja_on', readings_on)
+            
+            elif readings.attrib['r_type'] == 'pinyin':
+                readings_ch.append(readings.text)
+                # reading_kun[pronunciation] = pronunciation
+                print('chinese pinyin', readings_ch)
+
+            elif readings.attrib['r_type'] == 'korean':
+                readings_kr.append(readings.text)
+                # reading_kun[pronunciation] = pronunciation
+                print('chinese pinyin', readings_kr)
+                
+        #fetching all meanings of kanji to append to list
+        #create dictionary of meanings per languages
+        for meaning in kanji.findall('reading_meaning/rmgroup/meaning'):
+            meanings.append({"lang" : meaning.get('m_lang', 'en'), #default meaning in EN but exist sometimes meanings in FR, ES, PT
+                             "text" : get_text(meaning)}
+                )
+            
 #define function
 def get_key(meaning):
     for key, value in kanji_dict.items():
