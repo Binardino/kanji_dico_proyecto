@@ -28,6 +28,17 @@ def get_all_text(nodes):
        Avoid repeating same n.text for n in X loop for each kanji entry"""
     return [n.text for n in nodes if n.text is not None]
 
+
+#%% Main Parser
+def kanji_XML_parser_dic2(xml_path):
+    logging.info(f"loading XML file : {xml_path}")
+    #read raw kanji XML document
+    tree = ET.parse(xml_path)
+    root = tree.getroot()
+    
+    #create own dict
+    kanji_dict = {}
+    
 #define function
 def get_key(meaning):
     for key, value in kanji_dict.items():
