@@ -47,7 +47,18 @@ def get_text(parent : Optional[ET.Element], tag: Optional[str]=None, default=Non
 def get_all_text(nodes):
     """Return all .text values from a list of nodes.
        Avoid repeating same n.text for n in X loop for each kanji entry"""
+       
     return [n.text for n in nodes if n.text is not None]
+
+def find_nodes(parent : Optional[ET.Element], path: str) -> List[ET.Element]:
+    """Safe wrapper around parent.findall() 
+    Avoid having "AttributeError: 'NoneType' object has no attribute 'findall'" if a node is None
+    
+    Output : List - Empty if None
+    """
+    if parent is None:
+        return []
+    return parent.findall(path)
 
 
 #%% Main Parser
