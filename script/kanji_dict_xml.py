@@ -81,14 +81,14 @@ def kanji_XML_parser_dic2(xml_path):
         
         #codepoints fetching
         #codepoints store list of Unicode values ie. Unicode hex | Japanese JIS | variants
-        codepoints = {cp.get('cp_type') : get_text(cp) for cp in kanji.findall("codepoint.cp_value")} 
+        codepoints = {cp.get('cp_type') : get_text(cp) for cp in find_nodes(kanji, 'codepoint.cp_value')} 
         
         #radicals
         #fetching radical value from classical kanji numerotation - range 1 to 214
         #various classifications (classical, Shibano "JIS Kanwa Jiten", nelson_c...) 
         #stored in rad_type attribute
-        radicals   = {rad.get('rad_type') : get_text(rad) for rad in kanji.findall("radical/rad_value")} 
-        
+        radicals   = {rad.get('rad_type') : get_text(rad) for rad in find_nodes(kanji, 'radical/rad_value')} 
+
         #multiple readings & meanings for each kanji
         readings_on  = []
         readings_kun = []
