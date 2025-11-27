@@ -89,6 +89,7 @@ def kanji_XML_parser_dic2(xml_path) -> Dict[str, Any]:
         #stored in rad_type attribute
         radicals   = {rad.get('rad_type') : get_text(rad) for rad in find_nodes(kanji, 'radical/rad_value')} 
 
+        #readings & meanings
         #multiple readings & meanings for each kanji
         readings_on  = []
         readings_kun = []
@@ -123,7 +124,50 @@ def kanji_XML_parser_dic2(xml_path) -> Dict[str, Any]:
             meanings.append({"lang" : meaning.get('m_lang', 'en'), #default meaning in EN but exist sometimes meanings in FR, ES, PT
                              "text" : get_text(meaning)}
                 )
-            
+                
+        #MISC - Miscellaneous data - convey additional data for each kanji
+        misc = kanji .find('misc')
+        #grade - school grade level (1 - 10)
+        grade        = get_text(misc, 'grade')
+        #stroke count - number of strokes per kanji
+        stroke_count = get_text(misc, 'stroke_count')
+        #freq - frequency rank : from 1 to 2500
+        frequency    = get_text(misc, 'freq')
+        #JLPT - Former JLPT level (1-5)
+        jlpt         = get_text(misc, 'jlpt')
+        
+        #variant - Contains cross-reference codes to variant kanji.
+        
+        #Variants to be added     
+        
+        #dict refs & query codes
+        
+        
+        kanji_dict[literal] = {
+                    'literal'      : literal,
+                    'codepoints'   : codepoints,
+                    'radicals'     : radicals,
+                    'grade'        : grade,
+                    'stroke_count' : stroke_count,
+                    'frequency'    : frequency,
+                    'jlpt'         : jlpt,
+                   # 'variants': variants,
+                   # 'dict_refs': dict_refs,
+                   # 'query_codes': query_codes,
+                    'readings': {
+                         'on'      : readings_on,
+                         'kun'     : readings_kun,
+                        'pinyin'   : readings_ch,
+                        'korean'   : readings_kr
+                    },
+                    'meanings'     : meanings,
+                   # 'nanori': nanori,
+                           }
+        
+        logging.info(f"Parsing kanji: {literal} completed successfully.")
+
+    logging.info("Parsing completed successfully.")
+    return kanji_dict
 #define function
 def get_key(meaning):
     for key, value in kanji_dict.items():
