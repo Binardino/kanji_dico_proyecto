@@ -62,7 +62,7 @@ def find_nodes(parent : Optional[ET.Element], path: str) -> List[ET.Element]:
 
 
 #%% Main Parser
-def kanji_XML_parser_dic2(xml_path):
+def kanji_XML_parser_dic2(xml_path) -> Dict[str, Any]:
     logging.info(f"loading XML file : {xml_path}")
     #read raw kanji XML document
     tree = ET.parse(xml_path)
