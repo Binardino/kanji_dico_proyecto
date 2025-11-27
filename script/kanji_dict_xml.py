@@ -2,6 +2,7 @@ import logging
 import xml.etree.ElementTree as ET
 import pandas as pd
 import json
+from typing import Optional, Dict, List, Any
 
 #logging config
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -19,14 +20,23 @@ Creating those 2 functions to avoid NoneType error if the node is not present fo
 Avoid repeating try & except OR if statement for each entry
 """
 
-def get_text(parent : Optional[ET.element], tag:str, node, default=None) -> Optional[str]:
-    """Return node.text safely with a default None output.
+def get_text(parent : Optional[ET.Element], tag: Optional[str]=None, default=None) -> Optional[str]:
+    """Flexible text extractor.
+       Return node.text safely with a default None output.
        Lookup inside a parent element
        
        - Handles parent = None
        - Handles missing subtag
        - Handles missing .text
+       
+       Usage:
+           Case #1 - get_text(node)            -> node.text
+           Case #2 - get_text(parent, "tag")   -> parent.find('tag').text 
     """
+    
+    #Case 1 : called as get_text(node)
+    if tag is None:
+        return parent.text if parent is not None else default
     
     if parent is None:
         return default
