@@ -4,6 +4,17 @@ import pandas as pd
 import json
 from typing import Optional, Dict, List, Any
 
+#%%debug mode
+# Create a logger object
+logger = logging.getLogger(__name__)
+
+DEBUG_MODE = False
+
+def set_debug(enabled: bool):
+    global DEBUG_MODE
+    DEBUG_MODE = enabled
+    logger.setLevel(logging.DEBUG if DEBUG_MODE else logging.INFO)
+
 #logging config
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -36,11 +47,21 @@ def get_text(parent : Optional[ET.Element], tag: Optional[str]=None, default=Non
     
     #Case 1 : called as get_text(node)
     if tag is None:
+        if DEBUG_MODE: logger.debug('get_text: reading direct .text from node')
         return parent.text if parent is not None else default
-    
+
+    # Case 2: get_text(parent, "tag")    
     if parent is None:
+        if DEBUG_MODE: logger.debug(f"get_text: parent=None, tag='{tag}' → default")
         return default
+    
     node = parent.find(tag)
+    
+    if DEBUG_MODE:
+        logger.debug(
+            f"get_text: tag='{tag}', found={node is not None}, "
+            f"text={node.text if node is not None else None}"
+        )
 
     return node.text if node is not None else default
 
@@ -48,6 +69,8 @@ def get_all_text(nodes):
     """Return all .text values from a list of nodes.
        Avoid repeating same n.text for n in X loop for each kanji entry"""
        
+    if DEBUG_MODE:
+        logger.debug(f"get_all_text: {len(nodes)} nodes")
     return [n.text for n in nodes if n.text is not None]
 
 def find_nodes(parent : Optional[ET.Element], path: str) -> List[ET.Element]:
@@ -57,8 +80,11 @@ def find_nodes(parent : Optional[ET.Element], path: str) -> List[ET.Element]:
     Output : List - Empty if None
     """
     if parent is None:
+        if DEBUG_MODE: logger.debug("find_nodes: parent=None → []")
         return []
-    return parent.findall(path)
+    nodes = parent.findall(path)
+    if DEBUG_MODE: logger.debug(f"find_nodes: path='{path}' -> {len(nodes)} nodes")
+    return nodes
 
 
 #%% Main Parser
