@@ -194,6 +194,36 @@ def kanji_XML_parser_dic2(xml_path) -> Dict[str, Any]:
 
     logging.info("Parsing completed successfully.")
     return kanji_dict
+            
+#%% filtering on Japanese kanji only
+
+def filter_japanese_janji(kanji_dict: dict, jlpt_levels=None, require_readings=True):
+    if jlpt_levels is None:
+        jlpt_levels = {'1', '2', '3', '4', '5'}
+    
+    japanese_filtered = {}
+    
+    for kanji, data in kanji_dict.items():
+        readings = data.get("readings", {})
+        has_on  = readings.get("on")
+        has_kun = readings.get("kun")
+        
+        #1. Keep only Japanese kanji
+        if require_readings and not (has_on or has_kun):
+            continue
+        
+        #2. Must have a JLPT tag value
+        jlpt_tag = data.get('jlpt')
+        if jlpt_tag is None :
+            continue
+        
+        #3. Keep only specific JLPT level
+        if jlpt_tag not in jlpt_levels:
+            continue
+        
+        japanese_filtered[kanji] = data
+        
+    return japanese_filtered
 #define function
 def get_key(meaning):
     for key, value in kanji_dict.items():
