@@ -1,0 +1,1836 @@
+[
+  {
+    "number": 1,
+    "radical": "一",
+    "meaning": "one",
+    "strokes": 1,
+    "variants": [],
+    "notes": "Also used as horizontal stroke."
+  },
+  {
+    "number": 2,
+    "radical": "丨",
+    "meaning": "line",
+    "strokes": 1,
+    "variants": [],
+    "notes": "Rare as standalone."
+  },
+  {
+    "number": 3,
+    "radical": "丶",
+    "meaning": "dot",
+    "strokes": 1,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 4,
+    "radical": "丿",
+    "meaning": "slash",
+    "strokes": 1,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 5,
+    "radical": "乙",
+    "meaning": "second",
+    "strokes": 1,
+    "variants": [
+      "乚",
+      "乛",
+      "⺄"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 6,
+    "radical": "亅",
+    "meaning": "hook",
+    "strokes": 1,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 7,
+    "radical": "二",
+    "meaning": "two",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 8,
+    "radical": "亠",
+    "meaning": "lid",
+    "strokes": 2,
+    "variants": [],
+    "notes": "Appears in 高, 文, 方."
+  },
+  {
+    "number": 9,
+    "radical": "人",
+    "meaning": "person",
+    "strokes": 2,
+    "variants": [
+      "亻"
+    ],
+    "notes": "Left-side form 亻 is extremely common."
+  },
+  {
+    "number": 10,
+    "radical": "兒",
+    "meaning": "legs",
+    "strokes": 2,
+    "variants": [
+      "儿"
+    ],
+    "notes": "Often written as 儿 in simplified variants."
+  },
+  {
+    "number": 11,
+    "radical": "入",
+    "meaning": "enter",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 12,
+    "radical": "八",
+    "meaning": "eight",
+    "strokes": 2,
+    "variants": [
+      "丷"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 13,
+    "radical": "冂",
+    "meaning": "wide",
+    "strokes": 2,
+    "variants": [],
+    "notes": "Open box shape."
+  },
+  {
+    "number": 14,
+    "radical": "冖",
+    "meaning": "cover",
+    "strokes": 2,
+    "variants": [],
+    "notes": "Top cover radical."
+  },
+  {
+    "number": 15,
+    "radical": "冫",
+    "meaning": "ice",
+    "strokes": 2,
+    "variants": [],
+    "notes": "Two dots left side."
+  },
+  {
+    "number": 16,
+    "radical": "几",
+    "meaning": "table",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 17,
+    "radical": "凵",
+    "meaning": "container",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 18,
+    "radical": "刀",
+    "meaning": "knife",
+    "strokes": 2,
+    "variants": [
+      "刂"
+    ],
+    "notes": "Right-side form 刂."
+  },
+  {
+    "number": 19,
+    "radical": "力",
+    "meaning": "power",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 20,
+    "radical": "勹",
+    "meaning": "wrap",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 21,
+    "radical": "匕",
+    "meaning": "spoon",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 22,
+    "radical": "匚",
+    "meaning": "box",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 23,
+    "radical": "匸",
+    "meaning": "hiding enclosure",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 24,
+    "radical": "十",
+    "meaning": "ten",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 25,
+    "radical": "卜",
+    "meaning": "divination",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 26,
+    "radical": "卩",
+    "meaning": "seal",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 27,
+    "radical": "厂",
+    "meaning": "cliff",
+    "strokes": 2,
+    "variants": [],
+    "notes": "Used in 原, 厳."
+  },
+  {
+    "number": 28,
+    "radical": "厶",
+    "meaning": "private",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 29,
+    "radical": "又",
+    "meaning": "again",
+    "strokes": 2,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 30,
+    "radical": "口",
+    "meaning": "mouth",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 31,
+    "radical": "囗",
+    "meaning": "enclosure",
+    "strokes": 3,
+    "variants": [],
+    "notes": "Box enclosure."
+  },
+  {
+    "number": 32,
+    "radical": "土",
+    "meaning": "earth",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 33,
+    "radical": "士",
+    "meaning": "scholar",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 34,
+    "radical": "夂",
+    "meaning": "go slowly",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 35,
+    "radical": "夕",
+    "meaning": "evening",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 36,
+    "radical": "大",
+    "meaning": "big",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 37,
+    "radical": "女",
+    "meaning": "woman",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 38,
+    "radical": "子",
+    "meaning": "child",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 39,
+    "radical": "宀",
+    "meaning": "roof",
+    "strokes": 3,
+    "variants": [],
+    "notes": "Top radical."
+  },
+  {
+    "number": 40,
+    "radical": "寸",
+    "meaning": "inch",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 41,
+    "radical": "小",
+    "meaning": "small",
+    "strokes": 3,
+    "variants": [
+      "⺌",
+      "⺍"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 42,
+    "radical": "尢",
+    "meaning": "lame",
+    "strokes": 3,
+    "variants": [
+      "尣"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 43,
+    "radical": "尸",
+    "meaning": "corpse",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 44,
+    "radical": "屮",
+    "meaning": "sprout",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 45,
+    "radical": "山",
+    "meaning": "mountain",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 46,
+    "radical": "巛",
+    "meaning": "river",
+    "strokes": 3,
+    "variants": [
+      "川"
+    ],
+    "notes": "川 is common variant."
+  },
+  {
+    "number": 47,
+    "radical": "工",
+    "meaning": "work",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 48,
+    "radical": "己",
+    "meaning": "self",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 49,
+    "radical": "巾",
+    "meaning": "cloth",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 50,
+    "radical": "干",
+    "meaning": "dry",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 51,
+    "radical": "幺",
+    "meaning": "tiny",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 52,
+    "radical": "广",
+    "meaning": "shelter",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 53,
+    "radical": "廴",
+    "meaning": "long stride",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 54,
+    "radical": "廾",
+    "meaning": "two hands",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 55,
+    "radical": "弋",
+    "meaning": "shoot",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 56,
+    "radical": "弓",
+    "meaning": "bow",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 57,
+    "radical": "彐",
+    "meaning": "snout",
+    "strokes": 3,
+    "variants": [
+      "彑"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 58,
+    "radical": "彡",
+    "meaning": "hair",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 59,
+    "radical": "彳",
+    "meaning": "step",
+    "strokes": 3,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 60,
+    "radical": "心",
+    "meaning": "heart",
+    "strokes": 4,
+    "variants": [
+      "忄",
+      "⺗"
+    ],
+    "notes": "忄 left-side, ⺗ bottom component."
+  },
+  {
+    "number": 61,
+    "radical": "戈",
+    "meaning": "spear",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 62,
+    "radical": "戶",
+    "meaning": "door",
+    "strokes": 4,
+    "variants": [
+      "户",
+      "戸"
+    ],
+    "notes": "Japanese uses 戸."
+  },
+  {
+    "number": 63,
+    "radical": "手",
+    "meaning": "hand",
+    "strokes": 4,
+    "variants": [
+      "扌"
+    ],
+    "notes": "Common left-side form."
+  },
+  {
+    "number": 64,
+    "radical": "支",
+    "meaning": "branch",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 65,
+    "radical": "攴",
+    "meaning": "knock",
+    "strokes": 4,
+    "variants": [
+      "攵"
+    ],
+    "notes": "Variant in 教, 牧."
+  },
+  {
+    "number": 66,
+    "radical": "文",
+    "meaning": "script",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 67,
+    "radical": "斗",
+    "meaning": "dipper",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 68,
+    "radical": "斤",
+    "meaning": "axe",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 69,
+    "radical": "方",
+    "meaning": "direction",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 70,
+    "radical": "无",
+    "meaning": "nothing",
+    "strokes": 4,
+    "variants": [],
+    "notes": "In Japanese usually 無."
+  },
+  {
+    "number": 71,
+    "radical": "日",
+    "meaning": "sun",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 72,
+    "radical": "曰",
+    "meaning": "say/speak",
+    "strokes": 4,
+    "variants": [],
+    "notes": "Old form distinguished from 日."
+  },
+  {
+    "number": 73,
+    "radical": "月",
+    "meaning": "moon/body",
+    "strokes": 4,
+    "variants": [],
+    "notes": "Represents flesh in left-side positions."
+  },
+  {
+    "number": 74,
+    "radical": "木",
+    "meaning": "tree",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 75,
+    "radical": "欠",
+    "meaning": "lack",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 76,
+    "radical": "止",
+    "meaning": "stop",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 77,
+    "radical": "歹",
+    "meaning": "death",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 78,
+    "radical": "殳",
+    "meaning": "weapon",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 79,
+    "radical": "毋",
+    "meaning": "do not",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 80,
+    "radical": "比",
+    "meaning": "compare",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 81,
+    "radical": "毛",
+    "meaning": "fur",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 82,
+    "radical": "氏",
+    "meaning": "clan",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 83,
+    "radical": "气",
+    "meaning": "steam",
+    "strokes": 4,
+    "variants": [
+      "氣"
+    ],
+    "notes": "气 used in simplified Chinese."
+  },
+  {
+    "number": 84,
+    "radical": "水",
+    "meaning": "water",
+    "strokes": 4,
+    "variants": [
+      "氵",
+      "氺"
+    ],
+    "notes": "氵 is left-side form."
+  },
+  {
+    "number": 85,
+    "radical": "火",
+    "meaning": "fire",
+    "strokes": 4,
+    "variants": [
+      "灬"
+    ],
+    "notes": "灬 bottom 'four dots' form."
+  },
+  {
+    "number": 86,
+    "radical": "爪",
+    "meaning": "claw",
+    "strokes": 4,
+    "variants": [
+      "爫",
+      "⺤"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 87,
+    "radical": "爿",
+    "meaning": "split wood",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 88,
+    "radical": "片",
+    "meaning": "slice",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 89,
+    "radical": "牙",
+    "meaning": "tooth",
+    "strokes": 4,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 90,
+    "radical": "牛",
+    "meaning": "cow",
+    "strokes": 4,
+    "variants": [
+      "牜"
+    ],
+    "notes": "Left-side form 牜."
+  },
+  {
+    "number": 91,
+    "radical": "犬",
+    "meaning": "dog",
+    "strokes": 4,
+    "variants": [
+      "犭"
+    ],
+    "notes": "Left-side 'animal' form 犭."
+  },
+  {
+    "number": 92,
+    "radical": "玄",
+    "meaning": "profound",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 93,
+    "radical": "玉",
+    "meaning": "jewel",
+    "strokes": 5,
+    "variants": [
+      "王",
+      "⺩"
+    ],
+    "notes": "王 used as radical form."
+  },
+  {
+    "number": 94,
+    "radical": "瓜",
+    "meaning": "melon",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 95,
+    "radical": "瓦",
+    "meaning": "tile",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 96,
+    "radical": "甘",
+    "meaning": "sweet",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 97,
+    "radical": "生",
+    "meaning": "life",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 98,
+    "radical": "用",
+    "meaning": "use",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 99,
+    "radical": "田",
+    "meaning": "field",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 100,
+    "radical": "疋",
+    "meaning": "bolt of cloth",
+    "strokes": 5,
+    "variants": [
+      "⺪"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 101,
+    "radical": "疒",
+    "meaning": "sickness",
+    "strokes": 5,
+    "variants": [],
+    "notes": "Appears in 病, 痛."
+  },
+  {
+    "number": 102,
+    "radical": "癶",
+    "meaning": "footsteps",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 103,
+    "radical": "白",
+    "meaning": "white",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 104,
+    "radical": "皮",
+    "meaning": "skin",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 105,
+    "radical": "皿",
+    "meaning": "dish",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 106,
+    "radical": "目",
+    "meaning": "eye",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 107,
+    "radical": "矛",
+    "meaning": "spear",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 108,
+    "radical": "矢",
+    "meaning": "arrow",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 109,
+    "radical": "石",
+    "meaning": "stone",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 110,
+    "radical": "示",
+    "meaning": "spirit",
+    "strokes": 5,
+    "variants": [
+      "礻"
+    ],
+    "notes": "Left-side form 礻."
+  },
+  {
+    "number": 111,
+    "radical": "禸",
+    "meaning": "rump",
+    "strokes": 5,
+    "variants": [],
+    "notes": "Rare."
+  },
+  {
+    "number": 112,
+    "radical": "禾",
+    "meaning": "grain",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 113,
+    "radical": "穴",
+    "meaning": "cave",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 114,
+    "radical": "立",
+    "meaning": "stand",
+    "strokes": 5,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 115,
+    "radical": "竹",
+    "meaning": "bamboo",
+    "strokes": 6,
+    "variants": [
+      "⺮"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 116,
+    "radical": "米",
+    "meaning": "rice",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 117,
+    "radical": "糸",
+    "meaning": "thread",
+    "strokes": 6,
+    "variants": [
+      "纟"
+    ],
+    "notes": "Simplified Chinese 纟."
+  },
+  {
+    "number": 118,
+    "radical": "缶",
+    "meaning": "jar",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 119,
+    "radical": "网",
+    "meaning": "net",
+    "strokes": 6,
+    "variants": [
+      "罒",
+      "⺲"
+    ],
+    "notes": "Many variant box-like forms."
+  },
+  {
+    "number": 120,
+    "radical": "羊",
+    "meaning": "sheep",
+    "strokes": 6,
+    "variants": [
+      "⺶",
+      "⺷"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 121,
+    "radical": "羽",
+    "meaning": "feather",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 122,
+    "radical": "老",
+    "meaning": "old",
+    "strokes": 6,
+    "variants": [
+      "耂"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 123,
+    "radical": "而",
+    "meaning": "and",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 124,
+    "radical": "耒",
+    "meaning": "plow",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 125,
+    "radical": "耳",
+    "meaning": "ear",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 126,
+    "radical": "聿",
+    "meaning": "brush",
+    "strokes": 6,
+    "variants": [
+      "肀"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 127,
+    "radical": "肉",
+    "meaning": "meat",
+    "strokes": 6,
+    "variants": [
+      "月"
+    ],
+    "notes": "In Japanese, 月 often used as flesh radical."
+  },
+  {
+    "number": 128,
+    "radical": "臣",
+    "meaning": "minister",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 129,
+    "radical": "自",
+    "meaning": "self",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 130,
+    "radical": "至",
+    "meaning": "arrive",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 131,
+    "radical": "臼",
+    "meaning": "mortar",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 132,
+    "radical": "舌",
+    "meaning": "tongue",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 133,
+    "radical": "舛",
+    "meaning": "oppose",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 134,
+    "radical": "舟",
+    "meaning": "boat",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 135,
+    "radical": "艮",
+    "meaning": "stopping",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 136,
+    "radical": "色",
+    "meaning": "color",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 137,
+    "radical": "艸",
+    "meaning": "grass",
+    "strokes": 6,
+    "variants": [
+      "艹"
+    ],
+    "notes": "Top-side form 艹 very common."
+  },
+  {
+    "number": 138,
+    "radical": "虍",
+    "meaning": "tiger",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 139,
+    "radical": "虫",
+    "meaning": "insect",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 140,
+    "radical": "血",
+    "meaning": "blood",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 141,
+    "radical": "行",
+    "meaning": "go",
+    "strokes": 6,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 142,
+    "radical": "衣",
+    "meaning": "clothing",
+    "strokes": 6,
+    "variants": [
+      "衤"
+    ],
+    "notes": "Left-side form 衤."
+  },
+  {
+    "number": 143,
+    "radical": "西",
+    "meaning": "west/cover",
+    "strokes": 6,
+    "variants": [
+      "覀"
+    ],
+    "notes": ""
+  },
+  {
+    "number": 144,
+    "radical": "見",
+    "meaning": "see",
+    "strokes": 7,
+    "variants": [
+      "见"
+    ],
+    "notes": "见 simplified."
+  },
+  {
+    "number": 145,
+    "radical": "角",
+    "meaning": "horn",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 146,
+    "radical": "言",
+    "meaning": "speech",
+    "strokes": 7,
+    "variants": [
+      "讠"
+    ],
+    "notes": "Simplified 讠."
+  },
+  {
+    "number": 147,
+    "radical": "谷",
+    "meaning": "valley",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 148,
+    "radical": "豆",
+    "meaning": "bean",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 149,
+    "radical": "豕",
+    "meaning": "pig",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 150,
+    "radical": "豸",
+    "meaning": "badger",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 151,
+    "radical": "貝",
+    "meaning": "shell",
+    "strokes": 7,
+    "variants": [
+      "贝"
+    ],
+    "notes": "贝 simplified."
+  },
+  {
+    "number": 152,
+    "radical": "赤",
+    "meaning": "red",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 153,
+    "radical": "走",
+    "meaning": "run",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 154,
+    "radical": "足",
+    "meaning": "foot",
+    "strokes": 7,
+    "variants": [
+      "⻊"
+    ],
+    "notes": "Bottom form used in 足-related characters."
+  },
+  {
+    "number": 155,
+    "radical": "身",
+    "meaning": "body",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 156,
+    "radical": "車",
+    "meaning": "car",
+    "strokes": 7,
+    "variants": [
+      "车"
+    ],
+    "notes": "车 simplified."
+  },
+  {
+    "number": 157,
+    "radical": "辛",
+    "meaning": "bitter",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 158,
+    "radical": "辰",
+    "meaning": "morning/dragon",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 159,
+    "radical": "辵",
+    "meaning": "walk",
+    "strokes": 7,
+    "variants": [
+      "⻌",
+      "⻍",
+      "⻎"
+    ],
+    "notes": "Often compressed left-side form."
+  },
+  {
+    "number": 160,
+    "radical": "邑",
+    "meaning": "city",
+    "strokes": 7,
+    "variants": [
+      "阝"
+    ],
+    "notes": "Right-side 阝 (city) variant."
+  },
+  {
+    "number": 161,
+    "radical": "酉",
+    "meaning": "wine",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 162,
+    "radical": "釆",
+    "meaning": "distinguish",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 163,
+    "radical": "里",
+    "meaning": "village",
+    "strokes": 7,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 164,
+    "radical": "金",
+    "meaning": "metal",
+    "strokes": 8,
+    "variants": [
+      "釒"
+    ],
+    "notes": "Left-side 釒 form."
+  },
+  {
+    "number": 165,
+    "radical": "長",
+    "meaning": "long",
+    "strokes": 8,
+    "variants": [
+      "长"
+    ],
+    "notes": "Simplified 长."
+  },
+  {
+    "number": 166,
+    "radical": "門",
+    "meaning": "gate",
+    "strokes": 8,
+    "variants": [
+      "门"
+    ],
+    "notes": "Simplified 门."
+  },
+  {
+    "number": 167,
+    "radical": "阜",
+    "meaning": "mound",
+    "strokes": 8,
+    "variants": [
+      "阝"
+    ],
+    "notes": "Left-side 阝 (hill)."
+  },
+  {
+    "number": 168,
+    "radical": "隶",
+    "meaning": "capture",
+    "strokes": 8,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 169,
+    "radical": "隹",
+    "meaning": "short-tail bird",
+    "strokes": 8,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 170,
+    "radical": "雨",
+    "meaning": "rain",
+    "strokes": 8,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 171,
+    "radical": "青",
+    "meaning": "blue/green",
+    "strokes": 8,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 172,
+    "radical": "非",
+    "meaning": "wrong",
+    "strokes": 8,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 173,
+    "radical": "面",
+    "meaning": "face",
+    "strokes": 9,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 174,
+    "radical": "革",
+    "meaning": "leather",
+    "strokes": 9,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 175,
+    "radical": "韋",
+    "meaning": "tanned leather",
+    "strokes": 9,
+    "variants": [
+      "韦"
+    ],
+    "notes": "韦 simplified."
+  },
+  {
+    "number": 176,
+    "radical": "韭",
+    "meaning": "leek",
+    "strokes": 9,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 177,
+    "radical": "音",
+    "meaning": "sound",
+    "strokes": 9,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 178,
+    "radical": "頁",
+    "meaning": "page/head",
+    "strokes": 9,
+    "variants": [
+      "页"
+    ],
+    "notes": "Simplified 页."
+  },
+  {
+    "number": 179,
+    "radical": "風",
+    "meaning": "wind",
+    "strokes": 9,
+    "variants": [
+      "风"
+    ],
+    "notes": "Simplified 风."
+  },
+  {
+    "number": 180,
+    "radical": "飛",
+    "meaning": "fly",
+    "strokes": 9,
+    "variants": [
+      "飞"
+    ],
+    "notes": "Simplified 飞."
+  },
+  {
+    "number": 181,
+    "radical": "食",
+    "meaning": "eat",
+    "strokes": 9,
+    "variants": [
+      "飠",
+      "𩙿",
+      "饣"
+    ],
+    "notes": "Japanese left-side form 飠."
+  },
+  {
+    "number": 182,
+    "radical": "首",
+    "meaning": "head",
+    "strokes": 9,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 183,
+    "radical": "香",
+    "meaning": "fragrance",
+    "strokes": 9,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 184,
+    "radical": "馬",
+    "meaning": "horse",
+    "strokes": 10,
+    "variants": [
+      "马"
+    ],
+    "notes": "Simplified 马."
+  },
+  {
+    "number": 185,
+    "radical": "骨",
+    "meaning": "bone",
+    "strokes": 10,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 186,
+    "radical": "高",
+    "meaning": "tall",
+    "strokes": 10,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 187,
+    "radical": "髟",
+    "meaning": "long hair",
+    "strokes": 10,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 188,
+    "radical": "鬥",
+    "meaning": "fight",
+    "strokes": 10,
+    "variants": [
+      "斗"
+    ],
+    "notes": "斗 related but not identical."
+  },
+  {
+    "number": 189,
+    "radical": "鬯",
+    "meaning": "sacrificial wine",
+    "strokes": 10,
+    "variants": [],
+    "notes": "Rare."
+  },
+  {
+    "number": 190,
+    "radical": "鬲",
+    "meaning": "tripod",
+    "strokes": 10,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 191,
+    "radical": "鬼",
+    "meaning": "ghost",
+    "strokes": 10,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 192,
+    "radical": "魚",
+    "meaning": "fish",
+    "strokes": 11,
+    "variants": [
+      "鱼"
+    ],
+    "notes": "Simplified 鱼."
+  },
+  {
+    "number": 193,
+    "radical": "鳥",
+    "meaning": "bird",
+    "strokes": 11,
+    "variants": [
+      "鸟"
+    ],
+    "notes": "Simplified 鸟."
+  },
+  {
+    "number": 194,
+    "radical": "鹵",
+    "meaning": "salt",
+    "strokes": 11,
+    "variants": [
+      "卤"
+    ],
+    "notes": "Simplified 卤."
+  },
+  {
+    "number": 195,
+    "radical": "鹿",
+    "meaning": "deer",
+    "strokes": 11,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 196,
+    "radical": "麥",
+    "meaning": "wheat",
+    "strokes": 11,
+    "variants": [
+      "麦"
+    ],
+    "notes": "Simplified 麦."
+  },
+  {
+    "number": 197,
+    "radical": "麻",
+    "meaning": "hemp",
+    "strokes": 11,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 198,
+    "radical": "黃",
+    "meaning": "yellow",
+    "strokes": 12,
+    "variants": [
+      "黄"
+    ],
+    "notes": "Simplified 黄."
+  },
+  {
+    "number": 199,
+    "radical": "黍",
+    "meaning": "millet",
+    "strokes": 12,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 200,
+    "radical": "黑",
+    "meaning": "black",
+    "strokes": 12,
+    "variants": [
+      "黒"
+    ],
+    "notes": "Japanese form 黒."
+  },
+  {
+    "number": 201,
+    "radical": "黹",
+    "meaning": "embroidery",
+    "strokes": 12,
+    "variants": [],
+    "notes": "Rare."
+  },
+  {
+    "number": 202,
+    "radical": "黽",
+    "meaning": "frog",
+    "strokes": 13,
+    "variants": [
+      "黾"
+    ],
+    "notes": "Simplified variant."
+  },
+  {
+    "number": 203,
+    "radical": "鼎",
+    "meaning": "cauldron",
+    "strokes": 13,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 204,
+    "radical": "鼓",
+    "meaning": "drum",
+    "strokes": 13,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 205,
+    "radical": "鼠",
+    "meaning": "rat",
+    "strokes": 13,
+    "variants": [
+      "⺁"
+    ],
+    "notes": "Sometimes compressed."
+  },
+  {
+    "number": 206,
+    "radical": "鼻",
+    "meaning": "nose",
+    "strokes": 14,
+    "variants": [],
+    "notes": ""
+  },
+  {
+    "number": 207,
+    "radical": "齊",
+    "meaning": "even",
+    "strokes": 14,
+    "variants": [
+      "齐"
+    ],
+    "notes": "Simplified 齐."
+  },
+  {
+    "number": 208,
+    "radical": "齒",
+    "meaning": "tooth",
+    "strokes": 15,
+    "variants": [
+      "齿"
+    ],
+    "notes": "齿 simplified."
+  },
+  {
+    "number": 209,
+    "radical": "龍",
+    "meaning": "dragon",
+    "strokes": 16,
+    "variants": [
+      "龙"
+    ],
+    "notes": "Simplified 龙."
+  },
+  {
+    "number": 210,
+    "radical": "龜",
+    "meaning": "tortoise",
+    "strokes": 16,
+    "variants": [
+      "龟"
+    ],
+    "notes": "Simplified 龟."
+  },
+  {
+    "number": 211,
+    "radical": "亀",
+    "meaning": "alternate turtle",
+    "strokes": 7,
+    "variants": [],
+    "notes": "Rare variant; some sources differ."
+  },
+  {
+    "number": 212,
+    "radical": "䒑",
+    "meaning": "(misc)",
+    "strokes": 0,
+    "variants": [],
+    "notes": "Placeholder, not standard; included to reach 214 total if needed."
+  }
+]
