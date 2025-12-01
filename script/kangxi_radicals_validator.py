@@ -28,3 +28,11 @@ def check_required_keys(kangxi_radical, errors):
             if field == "variants" and not isinstance(kangxi_radical[field], list):
                 errors.append(f"'variants' must be a list in kangxi_radical #{kangxi_radical['number']}")
                 
+def check_numbering(radicals, errors):
+    numbers = [rad['number'] for rad in radicals]
+    
+    if sorted(numbers) != list(range(1,215)):
+        errors.append('Numbering error : radicals should be numbered between 1 & 214 exactly')
+        
+    if len(numbers) != len(set(numbers)):
+        errors.append('Numbering error : duplicate radical number detected')
