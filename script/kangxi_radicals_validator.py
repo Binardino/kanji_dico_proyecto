@@ -36,3 +36,17 @@ def check_numbering(radicals, errors):
         
     if len(numbers) != len(set(numbers)):
         errors.append('Numbering error : duplicate radical number detected')
+
+def check_unicode_code(radical, errors):
+    code = radical["code"]
+    if not CODE_PATTERN.fullmatch(code):
+        errors.append(f"Invalid code format '{code}' in radical #{radical['number']}")
+
+    # check kangxi_radical matches code
+    expected_char = chr(int(code[2:], 16))
+    if radical["kangxi_radical"] != expected_char:
+        errors.append(
+            f"Unicode mismatch in radical #{radical['number']}: "
+            f"code {code} produces '{expected_char}' "
+            f"but kangxi_radical is '{radical['kangxi_radical']}'"
+        )
