@@ -50,3 +50,18 @@ def check_unicode_code(radical, errors):
             f"code {code} produces '{expected_char}' "
             f"but kangxi_radical is '{radical['kangxi_radical']}'"
         )
+
+def check_sequential_unicode(radical, errors):
+    """
+    Check that radical number n matches Unicode U+2F00 + (n-1)
+    This holds for all 214 radicals in the official Kangxi block.
+    """
+    n = radical["number"]
+    expected_codepoint = 0x2F00 + (n - 1)
+    actual_codepoint = int(radical["code"][2:], 16)
+
+    if expected_codepoint != actual_codepoint:
+        errors.append(
+            f"Sequential Unicode mismatch at #{n}: "
+            f"expected U+{expected_codepoint:04X}, got {radical['code']}"
+        )
