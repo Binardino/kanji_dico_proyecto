@@ -65,3 +65,18 @@ def check_sequential_unicode(radical, errors):
             f"Sequential Unicode mismatch at #{n}: "
             f"expected U+{expected_codepoint:04X}, got {radical['code']}"
         )
+
+def check_variants(radical, errors):
+    variants = radical["variants"]
+
+    # check duplicates
+    if len(variants) != len(set(variants)):
+        errors.append(f"Duplicate variants in radical #{radical['number']}")
+
+    # check all variants are single glyphs
+    for v in variants:
+        if len(v) != 1:
+            errors.append(
+                f"Variant '{v}' in radical #{radical['number']} "
+                f"is not a single character."
+            )
