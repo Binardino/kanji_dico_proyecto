@@ -106,3 +106,17 @@ def validate_radicals(radicals):
             errors.append(f"Empty meaning for radical #{radical['number']}")
 
     return errors
+
+def main():
+    radicals = load_radicals("kangxi_radicals.json")
+    errors = validate_radicals(radicals)
+
+    if not errors:
+        print("✓ All radicals passed validation with no errors.")
+    else:
+        print("❌ Validation errors detected:")
+        for e in errors:
+            print(" -", e)
+
+if __name__ == "__main__":
+    main()
