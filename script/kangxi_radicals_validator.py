@@ -80,3 +80,29 @@ def check_variants(radical, errors):
                 f"Variant '{v}' in radical #{radical['number']} "
                 f"is not a single character."
             )
+
+
+def validate_radicals(radicals):
+    errors = []
+
+    # global structure checks
+    check_numbering(radicals, errors)
+
+    # individual radical checks
+    for radical in radicals:
+        check_required_keys(radical, errors)
+        check_unicode_code(radical, errors)
+        check_sequential_unicode(radical, errors)
+        check_variants(radical, errors)
+
+        # strokes sanity
+        if not isinstance(radical["strokes"], int) or radical["strokes"] <= 0:
+            errors.append(f"Invalid stroke count in radical #{radical['number']}")
+
+        # english_name & meaning should not be empty
+        if not radical["english_name"]:
+            errors.append(f"Empty english_name for radical #{radical['number']}")
+        if not radical["meaning"]:
+            errors.append(f"Empty meaning for radical #{radical['number']}")
+
+    return errors
