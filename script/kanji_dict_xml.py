@@ -182,6 +182,8 @@ def kanji_XML_parser_dic2(xml_path) -> Dict[str, Any]:
          'value' : qc.text
         } for qc in find_nodes(kanji, 'query_code/q_code')
         ]
+
+        # Final structure per Kanji entry
         kanji_dict[literal] = {
                     'literal'      : literal,
                     'codepoints'   : codepoints,
@@ -190,9 +192,9 @@ def kanji_XML_parser_dic2(xml_path) -> Dict[str, Any]:
                     'stroke_count' : stroke_count,
                     'frequency'    : frequency,
                     'jlpt'         : jlpt,
-                   # 'variants': variants,
-                   # 'dict_refs': dict_refs,
-                   # 'query_codes': query_codes,
+                    'variants': variants,
+                    'dict_refs': dict_refs,
+                    'query_codes': query_codes,
                     'readings': {
                          'on'      : readings_on,
                          'kun'     : readings_kun,
