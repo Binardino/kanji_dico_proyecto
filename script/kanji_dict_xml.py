@@ -170,8 +170,12 @@ def kanji_XML_parser_dic2(xml_path) -> Dict[str, Any]:
         ]
         
         #dict refs & query codes
-        
-        
+        dict_refs = [
+        {'type'  : ref.get('dr_type'),
+         'value' : ref.text
+        } for ref in find_nodes(kanji, 'dic_number/dic_ref')  
+        ]
+
         kanji_dict[literal] = {
                     'literal'      : literal,
                     'codepoints'   : codepoints,
