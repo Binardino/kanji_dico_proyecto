@@ -163,19 +163,25 @@ def kanji_XML_parser_dic2(xml_path) -> Dict[str, Any]:
         jlpt         = get_text(misc, 'jlpt')
         
         #variant - Contains cross-reference codes to variant kanji.
-        variants = [
+        variants  = [
             {'type'  : v.get('var_type'),
              'value' : get_text(v)
             } for v in find_nodes(misc, 'variant')
         ]
         
-        #dict refs & query codes
-        dict_refs = [
+        #dict refs - dictionary references for the kanji
+        dict_refs  = [
         {'type'  : ref.get('dr_type'),
          'value' : ref.text
         } for ref in find_nodes(kanji, 'dic_number/dic_ref')  
         ]
 
+        #query_code information relating to the glyph
+        query_codes = [
+        {'type'  : qc.get('qc_type'),
+         'value' : qc.text
+        } for qc in find_nodes(kanji, 'query_code/q_code')
+        ]
         kanji_dict[literal] = {
                     'literal'      : literal,
                     'codepoints'   : codepoints,
