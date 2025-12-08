@@ -163,8 +163,11 @@ def kanji_XML_parser_dic2(xml_path) -> Dict[str, Any]:
         jlpt         = get_text(misc, 'jlpt')
         
         #variant - Contains cross-reference codes to variant kanji.
-        
-        #Variants to be added     
+        variants = [
+            {'type'  : v.get('var_type'),
+             'value' : get_text(v)
+            } for v in find_nodes(misc, 'variant')
+        ]
         
         #dict refs & query codes
         
