@@ -16,6 +16,19 @@ REQUIRED_FIELDS = ["number",
 CODE_PATTERN = re.compile(r"U\+2F[0-9A-F]{2}")
 
 def load_radicals(path):
+    """
+    Load the Kangxi radicals dataset from a JSON file.
+
+    Parameters
+    ----------
+    path : str or pathlib.Path
+        Path to the JSON file containing the radicals dataset.
+    
+    Returns
+    -------
+    list[dict] - list of radical dictionaries loaded from the file.
+    """
+
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
     
