@@ -33,6 +33,28 @@ def load_radicals(path):
         return json.load(f)
     
 def check_required_keys(kangxi_radical, errors):
+    """
+    Validate that a radical entry contains all required fields.
+    
+    Parameters
+    ----------
+    kangxi_radical : dict
+        A dictionary representing a single Kangxi radical entry.
+    errors : list[str]
+        A list to which error messages will be appended.
+    
+    Side Effects
+    ------------
+    Appends descriptive validation error messages to `errors` if:
+        - a required field is missing
+        - the 'variants' field exists but is not a list
+    
+    Notes
+    -----
+    This function does not validate the *contents* of each field, only their
+    presence and basic type correctness.
+    """
+    
     for field in REQUIRED_FIELDS:
         if field not in kangxi_radical:
             errors.append(f"Missing field '{field}' in kangxi_radical #{kangxi_radical.get('number')}")
