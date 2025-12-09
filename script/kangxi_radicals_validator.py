@@ -64,6 +64,27 @@ def check_required_keys(kangxi_radical, errors):
                 errors.append(f"'variants' must be a list in kangxi_radical #{kangxi_radical['number']}")
                 
 def check_numbering(radicals, errors):
+    """
+    Verify that radical numbering is correct, continuous, and contains no duplicates.
+
+    Parameters
+    ----------
+    radicals : list[dict]
+        List of radical entries. Each entry must contain a `number` field.
+    errors : list[str]
+        A list to which error messages will be appended.
+
+    Side Effects
+    ------------
+    Appends error messages to `errors` if:
+        - numbers are not exactly 1 through 214
+        - radical numbers are duplicated
+
+    Notes
+    -----
+    This check ensures the structural integrity of the dataset's numbering
+    system but does not validate the content of each radical.
+    """
     numbers = [rad['number'] for rad in radicals]
     
     if sorted(numbers) != list(range(1,215)):
