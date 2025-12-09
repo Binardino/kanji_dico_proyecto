@@ -2,7 +2,7 @@
 from pathlib import Path
 import json
 import pandas as pd
-
+#%%
 kangxi_radicals = [
   {
     "number": 1,
@@ -717,7 +717,7 @@ kangxi_radicals = [
     "english_name": "KANGXI RADICAL HAND",
     "meaning": "hand",
     "strokes": 4,
-    "variants": ["扌", " 龵"],
+    "variants": ["扌", "龵"],
     "notes": "扌 is left-side variant."
   },
   {
@@ -2463,7 +2463,7 @@ kangxi_radicals = [
 # Some entries (towards the end) may be represented with historical forms; for completeness we included common variants.
 
 # Save JSON files: kangxi_radicals.json and radical_crosswalk.json
-out_dir = Path("./")
+out_dir = Path("../data/")
 out_dir.mkdir(parents=True, exist_ok=True)
 
 kangxi_path = out_dir / "kangxi_radicals.json"

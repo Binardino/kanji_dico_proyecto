@@ -13,7 +13,7 @@ REQUIRED_FIELDS = ["number",
                     "notes"
                     ]
 
-CODE_PATTERN = re.compile(r"U\+2F[0-9A-F}{2}")
+CODE_PATTERN = re.compile(r"U\+2F[0-9A-F]{2}")
 
 def load_radicals(path):
     with open(path, "r", encoding="utf-8") as f:
@@ -108,7 +108,7 @@ def validate_radicals(radicals):
     return errors
 
 def main():
-    radicals = load_radicals("kangxi_radicals.json")
+    radicals = load_radicals("../data/kangxi_radicals.json")
     errors = validate_radicals(radicals)
 
     if not errors:
@@ -117,6 +117,7 @@ def main():
         print("❌ Validation errors detected:")
         for e in errors:
             print(" -", e)
+    return errors
 
 if __name__ == "__main__":
-    main()
+    errors = main()
