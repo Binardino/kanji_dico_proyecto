@@ -94,6 +94,28 @@ def check_numbering(radicals, errors):
         errors.append('Numbering error : duplicate radical number detected')
 
 def check_unicode_code(radical, errors):
+    """
+    Validate that the radical's Unicode code field is well-formed and consistent.
+
+    Parameters
+    ----------
+    radical : dict
+        A dictionary representing a single Kangxi radical entry. 
+        Must contain a 'code' and 'number' field.
+    errors : list[str]
+        A list to which error messages will be appended.
+
+    Side Effects
+    ------------
+    Appends an error to `errors` if the `code` field does not match 
+    the expected format defined by CODE_PATTERN (e.g., 'U+2F00').
+
+    Notes
+    -----
+    This validation does not check the semantic correctness of the codepoint
+    (e.g., whether it matches the radical glyph); it only checks the string
+    format. Additional semantic validation is handled elsewhere.
+    """
     code = radical["code"]
     if not CODE_PATTERN.fullmatch(code):
         errors.append(f"Invalid code format '{code}' in radical #{radical['number']}")
@@ -165,7 +187,7 @@ def validate_radicals(radicals):
 
 def main():
     radicals = load_radicals("../data/kangxi_radicals.json")
-    errors = validate_radicals(radicals)
+    errors   = validate_radicals(radicals)
 
     if not errors:
         print("✓ All radicals passed validation with no errors.")
