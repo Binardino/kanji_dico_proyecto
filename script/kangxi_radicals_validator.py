@@ -169,22 +169,6 @@ def check_sequential_unicode(radical, errors):
         )
 
 def check_variants(radical, errors):
-    variants = radical["variants"]
-
-    # check duplicates
-    if len(variants) != len(set(variants)):
-        errors.append(f"Duplicate variants in radical #{radical['number']}")
-
-    # check all variants are single glyphs
-    for v in variants:
-        if len(v) != 1:
-            errors.append(
-                f"Variant '{v}' in radical #{radical['number']} "
-                f"is not a single character."
-            )
-
-
-def validate_radicals(radicals):
     """
     Validate the variants field of a Kangxi radical entry.
 
@@ -207,7 +191,50 @@ def validate_radicals(radicals):
     -----
     Kangxi radical variants are expected to be individual Unicode glyphs.
     This function does not modify the dataset; it only reports inconsistencies.
+    """    
+    variants = radical["variants"]
+
+    # check duplicates
+    if len(variants) != len(set(variants)):
+        errors.append(f"Duplicate variants in radical #{radical['number']}")
+
+    # check all variants are single glyphs
+    for v in variants:
+        if len(v) != 1:
+            errors.append(
+                f"Variant '{v}' in radical #{radical['number']} "
+                f"is not a single character."
+            )
+
+
+def validate_radicals(radicals):
     """
+    Run all validation checks on the Kangxi radicals dataset.
+
+    Parameters
+    ----------
+    radicals : list[dict]
+        A list of Kangxi radical entries to validate.
+
+    Returns
+    -------
+    list[str]
+        A list of validation error messages. The list is empty if no errors
+        are detected.
+
+    Notes
+    -----
+    This function orchestrates all individual validation routines, including:
+        - numbering consistency
+        - required field presence
+        - Unicode code formatting
+        - Unicode sequence correctness
+        - variant integrity
+        - stroke count sanity
+        - non-empty semantic fields
+
+    The function is non-destructive and does not modify the input dataset.
+    """   
     errors = []
 
     # global structure checks
