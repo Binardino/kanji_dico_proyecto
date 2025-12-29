@@ -133,6 +133,30 @@ def check_sequential_unicode(radical, errors):
     """
     Check that radical number n matches Unicode U+2F00 + (n-1)
     This holds for all 214 radicals in the official Kangxi block.
+    Verify that the radical's Unicode codepoint matches its Kangxi radical number.
+
+    Parameters
+    ----------
+    radical : dict
+        A dictionary representing a single Kangxi radical entry. Must contain
+        'number' and 'code' fields.
+    errors : list[str]
+        A list to which error messages will be appended.
+
+    Side Effects
+    ------------
+    Appends an error message to `errors` if the Unicode codepoint derived from
+    the radical number does not match the declared `code` field.
+
+    Notes
+    -----
+    According to the Unicode standard, Kangxi radicals occupy the contiguous
+    block U+2F00–U+2FD5. The expected relationship is:
+
+        codepoint == 0x2F00 + (number - 1)
+
+    This function enforces that invariant to detect off-by-one shifts and
+    ordering errors.
     """
     n = radical["number"]
     expected_codepoint = 0x2F00 + (n - 1)
