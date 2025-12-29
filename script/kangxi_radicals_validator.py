@@ -185,6 +185,29 @@ def check_variants(radical, errors):
 
 
 def validate_radicals(radicals):
+    """
+    Validate the variants field of a Kangxi radical entry.
+
+    Parameters
+    ----------
+    radical : dict
+        A dictionary representing a single Kangxi radical entry. Must contain
+        a 'variants' field.
+    errors : list[str]
+        A list to which error messages will be appended.
+
+    Side Effects
+    ------------
+    Appends error messages to `errors` if:
+        - a variant contains leading or trailing whitespace
+        - a variant is not a single Unicode character
+        - duplicate variants are detected
+
+    Notes
+    -----
+    Kangxi radical variants are expected to be individual Unicode glyphs.
+    This function does not modify the dataset; it only reports inconsistencies.
+    """
     errors = []
 
     # global structure checks
