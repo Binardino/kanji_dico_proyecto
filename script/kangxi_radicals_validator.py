@@ -260,6 +260,23 @@ def validate_radicals(radicals):
     return errors
 
 def main():
+    """
+    Entry point for validating the Kangxi radicals dataset.
+
+    Loads the radicals dataset, runs validation, prints human-readable
+    diagnostic output, and returns the list of detected errors.
+
+    Returns
+    -------
+    list[str]
+        A list of validation error messages. Empty if validation succeeds.
+
+    Notes
+    -----
+    When executed as a script, this function prints validation results to
+    standard output. When imported and called programmatically, its return
+    value can be inspected directly (e.g., in Spyder or unit tests).
+    """
     radicals = load_radicals("../data/kangxi_radicals.json")
     errors   = validate_radicals(radicals)
 
@@ -269,7 +286,5 @@ def main():
         print("❌ Validation errors detected:")
         for e in errors:
             print(" -", e)
-    return errors
 
-if __name__ == "__main__":
-    errors = main()
+    return errors
