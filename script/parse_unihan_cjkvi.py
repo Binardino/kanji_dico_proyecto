@@ -1,6 +1,7 @@
 from pathlib import Path
 
 def parse_unihan_cjkvi(path):
+    IDS_OPERATORS = ("⿰", "⿱", "⿴", "⿵", "⿶","⿷", "⿸", "⿹", "⿺", "⿻")
 
     cjkvi_dict = {}
 
