@@ -9,8 +9,12 @@ def parse_unihan_cjkvi(path):
         for line in file:
             line = line.strip()
 
-            #skip empty lines
-            if not line or line.startswith('#'):
+            # skip empty lines or comments
+            if not line or line.startswith("#"):
+                continue
+            
+            #focus on Unihan codepoint lines
+            if not line.startswith("U+"):
                 continue
 
             parts = line.split('\t')
@@ -19,15 +23,22 @@ def parse_unihan_cjkvi(path):
             if len(parts) < 3:
                 continue
 
-            _, char, ids = parts[:3]
+            #split each entry in 3 variables
+            codepoint, char, ids = parts[:3]
 
-            cjkvi_dict[char] = ids
+            if not ids.startswith(IDS_OPERATORS):
+                continue
+
+            cjkvi_dict[char] = {
+                                'codepoint': codepoint,
+                                'ids'      : ids
+                                }
     
     return cjkvi_dict
 
 if __name__ == "__main__":
     path = Path("path/to/Unihan_CJKVI.txt")
-    cjkvi_data = perse_unihan_cjkvi(path)
+    cjkvi_data = parse_unihan_cjkvi(path)
     for char, ids in cjkvi_data.items():
         print(f"Parsed {char}: {ids}")
 
