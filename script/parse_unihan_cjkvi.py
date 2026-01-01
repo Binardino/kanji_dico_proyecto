@@ -10,6 +10,32 @@ def clean_ids(ids):
     
     return IDS_ANNONATION_REGEX.sub("", ids)
 #%%
+def parse_ids_minimal(ids):
+    if not ids:
+        return
+    
+    operator = ids[0]
+    
+    #only handle simple binary operators for now
+    if operator not in IDS_OPERATORS:
+        return None
+    
+    #minimal binary IDs must be exactly 3 characters long
+    if len(ids) != 3:
+        return None
+    
+    left  = ids[1]
+    right = ids[2]
+    
+    return {"operator" : operator,
+            "children" : [left, right]
+        }
+
+parse_ids_minimal("⿰氵毎")
+parse_ids_minimal("⿱⺊一")
+parse_ids_minimal("⿱一⿰丿𠃌")
+
+#%%
 def ids_to_positioned_components(parsed_ids):
     operator = parsed_ids['operator']
     children = parsed_ids['children']
