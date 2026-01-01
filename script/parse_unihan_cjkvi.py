@@ -1,5 +1,14 @@
 from pathlib import Path
+import re
 
+#%%
+def clean_ids(ids):
+    """
+    Remove Unihan annotations like [GTKV] from IDS strings to keep IDS clean.
+    """
+    IDS_ANNONATION_REGEX = re.compile(r"\[.*?\]$")
+    
+    return IDS_ANNONATION_REGEX.sub("", ids)
 def parse_unihan_cjkvi(path):
     IDS_OPERATORS = ("⿰", "⿱", "⿴", "⿵", "⿶","⿷", "⿸", "⿹", "⿺", "⿻")
 
