@@ -1,6 +1,13 @@
 from pathlib import Path
 import re
 
+IDS_OPERATORS        = ("⿰", "⿱", "⿴", "⿵", "⿶","⿷", "⿸", "⿹", "⿺", "⿻")
+
+IDS_BINARY_OPERATORS = {
+                        "⿰": ("left", "right"),
+                        "⿱": ("top", "bottom"),
+                    }
+
 #%%
 def clean_ids(ids):
     """
@@ -34,33 +41,7 @@ def parse_ids_minimal(ids):
 parse_ids_minimal("⿰氵毎")
 parse_ids_minimal("⿱⺊一")
 parse_ids_minimal("⿱一⿰丿𠃌")
-#%%
-def parse_ids_trees(ids):
-    """
-    Parse IDS strings into tree structures.
-    """
-    def _parse(index):
-        child = ids[index]
 
-        if child in IDS_OPERATORS:
-            operator = child
-            left_child, next_index  = _parse(index + 1)
-            right_child, next_index = _parse(next_index)
-
-            return {
-                'operator': operator, 
-                'children': [left_child, right_child]}, next_index
-
-        return {'charac': child}, index + 1
-
-    tree, final_index = _parse(0)
-
-    if final_index != len(ids):
-        raise ValueError("IDS string could not be fully parsed.")
-
-    return tree    
-
-parse_ids_trees('⿰⿱亠口心')
 #%%
 def ids_to_positioned_components(parsed_ids):
     operator = parsed_ids['operator']
@@ -72,6 +53,26 @@ def ids_to_positioned_components(parsed_ids):
             {'component': children[0], 'position' : left_pos},
             {'component': children[1], 'position' : right_pos}
             ]
+#%% 
+def extract_components_from_tree(tree, position=None):
+    """
+    Flatten an IDS tree into positioned atomic components.
+    """
+    if 'char' in tree:
+        return [{
+            'component' : tree['char'], 
+            'position'  : position
+            }]
+    operator = tree['operator']
+    left_pos, right_pos = IDS_BINARY_OPERATORS.get(operator, (None, None))
+
+    left, right = tree['children']
+
+    components = []
+    components.extend(extract_components_from_tree(left, left_pos))
+    components.extend(extract_components_from_tree(right, right_pos))
+
+    return components
 #%%
 def parse_unihan_cjkvi(path):
     IDS_OPERATORS = ("⿰", "⿱", "⿴", "⿵", "⿶","⿷", "⿸", "⿹", "⿺", "⿻")
