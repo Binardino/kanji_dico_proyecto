@@ -1,6 +1,13 @@
 from pathlib import Path
 import re
 
+IDS_OPERATORS        = ("⿰", "⿱", "⿴", "⿵", "⿶","⿷", "⿸", "⿹", "⿺", "⿻")
+
+IDS_BINARY_OPERATORS = {
+                        "⿰": ("left", "right"),
+                        "⿱": ("top", "bottom"),
+                    }
+
 #%%
 def clean_ids(ids):
     """
