@@ -41,7 +41,33 @@ def parse_ids_minimal(ids):
 parse_ids_minimal("⿰氵毎")
 parse_ids_minimal("⿱⺊一")
 parse_ids_minimal("⿱一⿰丿𠃌")
+#%%
+def parse_ids_trees(ids):
+    """
+    Parse IDS strings into tree structures.
+    """
+    def _parse(index):
+        child = ids[index]
 
+        if child in IDS_OPERATORS:
+            operator = child
+            left_child, next_index  = _parse(index + 1)
+            right_child, next_index = _parse(next_index)
+
+            return {
+                'operator': operator, 
+                'children': [left_child, right_child]}, next_index
+
+        return {'char': child}, index + 1
+
+    tree, final_index = _parse(0)
+
+    if final_index != len(ids):
+        raise ValueError("IDS string could not be fully parsed.")
+
+    return tree    
+
+parse_ids_trees('⿰⿱亠口心')
 #%%
 def ids_to_positioned_components(parsed_ids):
     operator = parsed_ids['operator']
