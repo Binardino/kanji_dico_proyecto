@@ -73,6 +73,9 @@ def ids_to_positioned_components(parsed_ids):
     operator = parsed_ids['operator']
     children = parsed_ids['children']
     
+    if operator not in IDS_BINARY_OPERATORS:
+        raise ValueError(f"Unsupported operator in minimal IDS: {operator}")
+    
     left_pos, right_pos = IDS_BINARY_OPERATORS[operator]
     
     return [
