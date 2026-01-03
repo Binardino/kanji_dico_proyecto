@@ -24,7 +24,7 @@ def parse_ids_minimal(ids):
     operator = ids[0]
     
     #only handle simple binary operators for now
-    if operator not in IDS_OPERATORS:
+    if operator not in IDS_BINARY_OPERATORS:
         return None
     
     #minimal binary IDs must be exactly 3 characters long
