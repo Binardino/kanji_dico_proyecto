@@ -142,7 +142,19 @@ def parse_unihan_cjkvi(path):
                 continue
 
             #split each entry in 3 variables
-            codepoint, char, ids = parts[:3]
+            codepoint, char, raw_ids = parts[:3]
+            
+            #clean IDS
+            ids = clean_ids(raw_ids)
+            
+            #parse IDS minimal
+            parsed_ids = parse_ids_minimal(ids)
+            
+            #derive positioned components
+            if parsed_ids is not None:
+                components = ids_to_positioned_components(parsed_ids)
+            else:
+                components = None
 
             if not ids.startswith(IDS_OPERATORS):
                 continue
