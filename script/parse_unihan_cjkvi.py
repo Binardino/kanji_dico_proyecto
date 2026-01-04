@@ -160,8 +160,11 @@ def parse_unihan_cjkvi(path):
                 continue
 
             cjkvi_dict[char] = {
-                                'codepoint': codepoint,
-                                'ids'      : ids
+                                'codepoint'  : codepoint,
+                                'raw_ids'    : raw_ids,
+                                'ids'        : ids,
+                                'parsed_ids' : parsed_ids,
+                                'components' : components
                                 }
     
     return cjkvi_dict
