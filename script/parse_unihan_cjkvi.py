@@ -104,10 +104,25 @@ def extract_components_from_tree(tree, position=None):
     return components
 #%%
 def parse_unihan_cjkvi(path):
-    IDS_OPERATORS = ("⿰", "⿱", "⿴", "⿵", "⿶","⿷", "⿸", "⿹", "⿺", "⿻")
+    """
+    Parse the Unihan_CJKVI file and extract IDS decompositions.
 
+    Parameters
+    ----------
+    path : str or Path
+        Path to the Unihan_CJKVI text file.
+
+    Returns
+    -------
+    dict[str, dict]
+        Dictionary mapping a character to its Unicode codepoint and IDS string.
+        Example:
+        {
+          "上": {"codepoint": "U+4E0A", "ids": "⿱⺊一"}
+        }
+    """
     cjkvi_dict = {}
-
+    
     with open(path, 'r', encoding='utf-8') as file:
         for line in file:
             line = line.strip()
