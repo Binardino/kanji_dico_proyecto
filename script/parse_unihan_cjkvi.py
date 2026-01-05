@@ -168,7 +168,33 @@ def parse_unihan_cjkvi(path):
                                 }
     
     return cjkvi_dict
+def normalise_kanji_entry(entry):
+    """
+    Normalise a kanji entry by removing annotations and extra spaces.
+    """
+    #case 1 - parsed with parse_ids_minimal
+    if entry.get('parsed_ids') is not None:
+        return {
+            'codepoint'  : entry['codepoint'],
+            'ids'        : entry['ids'],
+            'components' : entry['components']
+        }
+    
+    #case 2 - complex IDS - parse as tree
+    try:
+        tree       = parse_ids_trees(entry['ids'])
+        components = extract_components_from_tree(tree)
+        
+        return {
+            'codepoint'  : entry['codepoint'],
+            'ids'        : entry['ids'],
+            'components' : components
+        }
+    except Exception as e:
+        print(f"Error parsing IDS tree for {entry['codepoint']}: {e}")
+        pass
 
+    
 if __name__ == "__main__":
     path = Path("path/to/Unihan_CJKVI.txt")
     cjkvi_data = parse_unihan_cjkvi(path)
