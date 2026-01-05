@@ -168,6 +168,7 @@ def parse_unihan_cjkvi(path):
                                 }
     
     return cjkvi_dict
+#%%
 def normalise_kanji_entry(entry):
     """
     Normalise a kanji entry by removing annotations and extra spaces.
@@ -195,6 +196,13 @@ def normalise_kanji_entry(entry):
         pass
 
     
+    #case 3 - unsupported IDS
+    return {
+    'codepoint'  : entry['codepoint'],
+    'ids'        : entry['ids'],
+    'components' : None
+            }
+
 if __name__ == "__main__":
     path = Path("path/to/Unihan_CJKVI.txt")
     cjkvi_data = parse_unihan_cjkvi(path)
