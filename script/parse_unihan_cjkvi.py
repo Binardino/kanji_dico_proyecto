@@ -213,10 +213,11 @@ def normalise_unihan_dict(unihan_dict):
         normalised_dict[char] = normalise_kanji_entry(entry)
         
     return normalised_dict
+#%%
 if __name__ == "__main__":
-    path = Path("path/to/Unihan_CJKVI.txt")
-    cjkvi_data = parse_unihan_cjkvi(path)
-    for char, ids in cjkvi_data.items():
+    path = Path("../data/Unihan_CJKVI_database.txt")
+    raw_cjkvi_data = parse_unihan_cjkvi(path)
+    for char, ids in raw_cjkvi_data.items():
         print(f"Parsed {char}: {ids}")
 
             
