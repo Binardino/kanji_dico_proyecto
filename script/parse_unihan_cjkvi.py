@@ -203,6 +203,16 @@ def normalise_kanji_entry(entry):
     'components' : None
             }
 
+def normalise_unihan_dict(unihan_dict):
+    """
+    Normalise the entire Unihan dictionary by processing each kanji entry.
+    """
+    normalised_dict = {}
+    
+    for char, entry in unihan_dict.items():
+        normalised_dict[char] = normalise_kanji_entry(entry)
+        
+    return normalised_dict
 if __name__ == "__main__":
     path = Path("path/to/Unihan_CJKVI.txt")
     cjkvi_data = parse_unihan_cjkvi(path)
