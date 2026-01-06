@@ -220,4 +220,25 @@ if __name__ == "__main__":
     for char, ids in raw_cjkvi_data.items():
         print(f"Parsed {char}: {ids}")
 
+    KANJI_DB = normalise_unihan_dict(raw_cjkvi_data)
+#%%
+
+parsed = parse_ids_minimal("⿰氵毎")
+ids_to_positioned_components(parsed)
+#%% TEST
+unihan_data = parse_unihan_cjkvi(path)
+parsed = parse_ids_minimal(unihan_data["海"]["ids"])
+
+# 3. Interprétation en positions
+components = ids_to_positioned_components(parsed)
+#%%
+ids = unihan_data["海"]["ids"]
+parsed = parse_ids_minimal(ids)
+
+if parsed is None:
+    print("IDS non supporté :", repr(ids), "len =", len(ids))
+    
+ids = unihan_data["海"]["ids"]
+print(ids, len(ids), [c for c in ids])
+
             
