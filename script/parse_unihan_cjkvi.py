@@ -267,6 +267,17 @@ def index_kangxi_radicals(kangxi_list):
         }
 
     return indexed
+
+def build_variant_index(kangxi_radicals):
+    variant_index = {}
+    
+    for radical, data in kangxi_radicals.items():
+        variant_index[radical] = radical
+        
+        for variant in data.get('variants', []):
+            variant_index[variant] = radical
+            
+    return variant_index
 if __name__ == "__main__":
     path = Path("../data/Unihan_CJKVI_database.txt")
     raw_cjkvi_data = parse_unihan_cjkvi(path)
