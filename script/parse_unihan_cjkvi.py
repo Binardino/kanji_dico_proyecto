@@ -1,5 +1,6 @@
 from pathlib import Path
 import re
+import json
 
 IDS_OPERATORS        = ("⿰", "⿱", "⿴", "⿵", "⿶","⿷", "⿸", "⿹", "⿺", "⿻")
 
@@ -200,7 +201,7 @@ def normalise_kanji_entry(entry):
     return {
     'codepoint'  : entry['codepoint'],
     'ids'        : entry['ids'],
-    'components' : None
+    'components' : []
             }
 
 def normalise_unihan_dict(unihan_dict):
