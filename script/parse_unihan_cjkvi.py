@@ -245,6 +245,28 @@ def build_radical_dict(kanji_db, kangxi_radicals, variant_index):
             }
 
     return radical_dict
+def index_kangxi_radicals(kangxi_list):
+    """
+    Index Kangxi radicals by their canonical radical form.
+    Key = radical character used in IDS (e.g. 一, 丨, 丶)
+    """
+    indexed = {}
+
+    for r in kangxi_list:
+        radical_char = r["radical"]
+
+        indexed[radical_char] = {
+            "id": r["number"],
+            "kangxi_radical": r["kangxi_radical"],
+            "code": r["code"],
+            "english_name": r["english_name"],
+            "meaning": r["meaning"],
+            "strokes": r["strokes"],
+            "variants": r.get("variants", []),
+            "notes": r.get("notes", "")
+        }
+
+    return indexed
 if __name__ == "__main__":
     path = Path("../data/Unihan_CJKVI_database.txt")
     raw_cjkvi_data = parse_unihan_cjkvi(path)
