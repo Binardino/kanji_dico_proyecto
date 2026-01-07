@@ -215,6 +215,36 @@ def normalise_unihan_dict(unihan_dict):
         
     return normalised_dict
 #%%
+def build_radical_dict(kanji_db, kangxi_radicals, variant_index):
+    """
+    Build a reverse dictionary : 
+    radical -> all kanji using it
+    """
+
+    radical_dict = {}
+
+    for kanji, data in kanji_db.items():
+        for comp in data.get('components',  []):
+            comp_char = comp['component']
+            
+            radical_char = variant_index.get(comp_char)
+
+            if radical_char is None:
+                continue
+
+            if radical_char not in radical_dict:
+                radical_dict[radical_char] = {
+                    'radical_id' : kangxi_radicals[radical_char]['id'],
+                    'name'       : kangxi_radicals[radical_char].get('name'),
+                    'kanji'      : {}
+                }
+
+            radical_dict[radical_char]['kanji'][kanji] = {
+                'position' : comp['position'],
+                'ids_form' : comp_char
+            }
+
+    return radical_dict
 if __name__ == "__main__":
     path = Path("../data/Unihan_CJKVI_database.txt")
     raw_cjkvi_data = parse_unihan_cjkvi(path)
