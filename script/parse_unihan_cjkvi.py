@@ -285,6 +285,12 @@ if __name__ == "__main__":
         print(f"Parsed {char}: {ids}")
 
     KANJI_DB = normalise_unihan_dict(raw_cjkvi_data)
+    with open('../data/kangxi_radicals.json', 'r', encoding='utf-8') as f:
+        KANGXI_RADICALS_LIST = json.load(f)
+
+    KANGXI_RADICALS = index_kangxi_radicals(KANGXI_RADICALS_LIST)
+    VARIANT_INDEX = build_variant_index(KANGXI_RADICALS)
+    RADICAL_DB = build_radical_dict(KANJI_DB, KANGXI_RADICALS, VARIANT_INDEX)
 #%%
 
 parsed = parse_ids_minimal("⿰氵毎")
