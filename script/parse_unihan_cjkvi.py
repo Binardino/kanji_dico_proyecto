@@ -290,6 +290,38 @@ def build_variant_index(kangxi_radicals):
             variant_index[variant] = radical
             
     return variant_index
+
+def resolve_kanji_tree(char, kanji_db, visited=None):
+    """
+    Recursively resolve a kanji into its full component tree of atomic components.
+    """
+
+    if visited is None:
+        visited = set()
+
+    #avoid infinite loops
+    if char in visited:
+        return {'char': char, 'children': []}
+    
+    visited.add(char)
+
+    entry = kani_db.get(char)
+
+    #character not found in database or already atomic
+    if entry is None or not entry['components']:
+        return {'char': char, 'children': []}
+    
+    children = []
+    for component in entry['components']:
+        child_char = component['component']
+        subtree = resolve_kanji_tree(child_char, kanji_db, visited)
+        children.append()
+
+        return {
+            'char': char,
+            'children': children
+        }
+#%%
 if __name__ == "__main__":
     path = Path("../data/Unihan_CJKVI_database.txt")
     raw_cjkvi_data = parse_unihan_cjkvi(path)
