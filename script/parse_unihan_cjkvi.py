@@ -324,6 +324,64 @@ def resolve_kanji_tree(char, kanji_db, visited=None):
             'char': char,
             'children': children
         }
+
+def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, visited=None, position=None):
+    """Enriched version of resolve_kanji_tree with additional metadata.
+       Enriched view of the kanji decomposition tree.
+    1. is_leaf: whether the node is an atomic component (no further decomposition)
+    2. is_radical: whether the node is a Kangxi radical (canonical or variant)
+    3. position: the position of the component within its parent kanji (if applicable)
+    """
+
+    if visited is None:
+        visited = set()
+
+    if char in visited:
+        return {'char'      : char, 
+                'position'  : position,
+                'is_leaf'   : True,
+                'is_radical': False,
+                'children'  : []
+                }
+    
+    visited.add(char)
+
+    entry      = kanji_db.get(char)
+    components = entry['components'] if entry else []
+
+    is_leaf = not components
+
+    #is it a radical? canonical or variant
+    canonical_radical = variant_index.get(char)
+    is_radical = canonical_radical in kangxi_radicals if canonical_radical else False
+
+    node = {
+        'char'       : char,
+        'position'   : position,
+        'is_leaf'    : is_leaf,
+        'is_radical' : is_radical,
+        'children'   : []
+    }
+
+    for component in components:
+        child_char = component['component']
+        child_position = component['position']
+
+        subtree = resolve_kanji_tree_enriched(
+            child_char, 
+            kanji_db, 
+            variant_index, 
+            kangxi_radicals, 
+            visited, 
+            position=child_position
+        )
+        node['children'].append(subtree)
+
+    return node
+        #%%
+tree = resolve_kanji_tree("海", KANJI_DB)
+from pprint import pprint
+pprint(tree)
 #%%
 if __name__ == "__main__":
     path = Path("../data/Unihan_CJKVI_database.txt")
