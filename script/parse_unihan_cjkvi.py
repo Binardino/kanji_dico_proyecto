@@ -269,6 +269,18 @@ def index_kangxi_radicals(kangxi_list):
     return indexed
 
 def build_variant_index(kangxi_radicals):
+    """
+    Build a mapping dict from IDS variant forms to canonical Kangxi radicals.
+    e.g. 
+    VARIANT_TO_RADICAL = {
+    "氵": "水",
+    "忄": "心",
+    "扌": "手",
+    "礻": "示",
+    "衤": "衣",
+    "⻌": "辵"
+    }
+    """
     variant_index = {}
     
     for radical, data in kangxi_radicals.items():
