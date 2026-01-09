@@ -290,10 +290,13 @@ def build_variant_index(kangxi_radicals):
             variant_index[variant] = radical
             
     return variant_index
-
+#%%
 def resolve_kanji_tree(char, kanji_db, visited=None):
     """
+    Core function.
     Recursively resolve a kanji into its full component tree of atomic components.
+    Gives core recursive structure for kanji decomposition.
+    Structural gold standard.
     """
 
     if visited is None:
