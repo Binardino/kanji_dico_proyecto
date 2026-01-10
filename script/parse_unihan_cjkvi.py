@@ -399,6 +399,15 @@ def load_kanji_resources(unihan_path, kangxi_path):
         'VARIANT_INDEX'   : VARIANT_INDEX
         }
     
+#%%
+if __name__ == "__main__":
+    resources = load_kanji_resources(
+        Path("../data/Unihan_CJKVI_database.txt"),
+        Path("../data/kangxi_radicals.json")
+    )
+
+    print("Loaded", len(resources["KANJI_DB"]), "kanji")
+
 #%% test
 
 parsed = parse_ids_minimal("⿰氵毎")
