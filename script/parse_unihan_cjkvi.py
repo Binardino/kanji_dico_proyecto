@@ -1,5 +1,6 @@
 from pathlib import Path
 import re
+import json
 
 IDS_OPERATORS        = ("⿰", "⿱", "⿴", "⿵", "⿶","⿷", "⿸", "⿹", "⿺", "⿻")
 
@@ -200,7 +201,7 @@ def normalise_kanji_entry(entry):
     return {
     'codepoint'  : entry['codepoint'],
     'ids'        : entry['ids'],
-    'components' : None
+    'components' : []
             }
 
 def normalise_unihan_dict(unihan_dict):
@@ -214,6 +215,170 @@ def normalise_unihan_dict(unihan_dict):
         
     return normalised_dict
 #%%
+def build_radical_dict(kanji_db, kangxi_radicals, variant_index):
+    """
+    Build a reverse dictionary : 
+    radical -> all kanji using it
+    """
+
+    radical_dict = {}
+
+    for kanji, data in kanji_db.items():
+        for comp in data.get('components',  []):
+            comp_char = comp['component']
+            
+            radical_char = variant_index.get(comp_char)
+
+            if radical_char is None:
+                continue
+
+            if radical_char not in radical_dict:
+                radical_dict[radical_char] = {
+                    'radical_id' : kangxi_radicals[radical_char]['id'],
+                    'name'       : kangxi_radicals[radical_char].get('name'),
+                    'kanji'      : {}
+                }
+
+            radical_dict[radical_char]['kanji'][kanji] = {
+                'position' : comp['position'],
+                'ids_form' : comp_char
+            }
+
+    return radical_dict
+def index_kangxi_radicals(kangxi_list):
+    """
+    Index Kangxi radicals by their canonical radical form.
+    Key = radical character used in IDS (e.g. 一, 丨, 丶)
+    """
+    indexed = {}
+
+    for r in kangxi_list:
+        radical_char = r["radical"]
+
+        indexed[radical_char] = {
+            "id": r["number"],
+            "kangxi_radical": r["kangxi_radical"],
+            "code": r["code"],
+            "english_name": r["english_name"],
+            "meaning": r["meaning"],
+            "strokes": r["strokes"],
+            "variants": r.get("variants", []),
+            "notes": r.get("notes", "")
+        }
+
+    return indexed
+
+def build_variant_index(kangxi_radicals):
+    """
+    Build a mapping dict from IDS variant forms to canonical Kangxi radicals.
+    e.g. 
+    VARIANT_TO_RADICAL = {
+    "氵": "水",
+    "忄": "心",
+    "扌": "手",
+    "礻": "示",
+    "衤": "衣",
+    "⻌": "辵"
+    }
+    """
+    variant_index = {}
+    
+    for radical, data in kangxi_radicals.items():
+        variant_index[radical] = radical
+        
+        for variant in data.get('variants', []):
+            variant_index[variant] = radical
+            
+    return variant_index
+#%%
+def resolve_kanji_tree(char, kanji_db, visited=None):
+    """
+    Core function.
+    Recursively resolve a kanji into its full component tree of atomic components.
+    Gives core recursive structure for kanji decomposition.
+    Structural gold standard.
+    """
+
+    if visited is None:
+        visited = set()
+
+    #avoid infinite loops
+    if char in visited:
+        return {'char': char, 'children': []}
+    
+    visited.add(char)
+
+    entry = kanji_db.get(char)
+
+    #character not found in database or already atomic
+    if entry is None or not entry['components']:
+        return {'char': char, 'children': []}
+    
+    children = []
+    for component in entry['components']:
+        child_char = component['component']
+        subtree = resolve_kanji_tree(child_char, kanji_db, visited)
+        children.append(subtree)
+
+        return {
+            'char': char,
+            'children': children
+        }
+
+def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, visited=None, position=None):
+    """Enriched version of resolve_kanji_tree with additional metadata.
+       Enriched view of the kanji decomposition tree.
+    1. is_leaf: whether the node is an atomic component (no further decomposition)
+    2. is_radical: whether the node is a Kangxi radical (canonical or variant)
+    3. position: the position of the component within its parent kanji (if applicable)
+    """
+
+    if visited is None:
+        visited = set()
+
+    if char in visited:
+        return {'char'      : char, 
+                'position'  : position,
+                'is_leaf'   : True,
+                'is_radical': False,
+                'children'  : []
+                }
+    
+    visited.add(char)
+
+    entry      = kanji_db.get(char)
+    components = entry['components'] if entry else []
+
+    is_leaf = not components
+
+    #is it a radical? canonical or variant
+    canonical_radical = variant_index.get(char)
+    is_radical = canonical_radical in kangxi_radicals if canonical_radical else False
+
+    node = {
+        'char'       : char,
+        'position'   : position,
+        'is_leaf'    : is_leaf,
+        'is_radical' : is_radical,
+        'children'   : []
+    }
+
+    for component in components:
+        child_char = component['component']
+        child_position = component['position']
+
+        subtree = resolve_kanji_tree_enriched(
+            child_char, 
+            kanji_db, 
+            variant_index, 
+            kangxi_radicals, 
+            visited, 
+            position=child_position
+        )
+        node['children'].append(subtree)
+
+    return node
+#%%
 if __name__ == "__main__":
     path = Path("../data/Unihan_CJKVI_database.txt")
     raw_cjkvi_data = parse_unihan_cjkvi(path)
@@ -221,10 +386,21 @@ if __name__ == "__main__":
         print(f"Parsed {char}: {ids}")
 
     KANJI_DB = normalise_unihan_dict(raw_cjkvi_data)
-#%%
+    with open('../data/kangxi_radicals.json', 'r', encoding='utf-8') as f:
+        KANGXI_RADICALS_LIST = json.load(f)
+
+    KANGXI_RADICALS = index_kangxi_radicals(KANGXI_RADICALS_LIST)
+    VARIANT_INDEX = build_variant_index(KANGXI_RADICALS)
+    RADICAL_DB = build_radical_dict(KANJI_DB, KANGXI_RADICALS, VARIANT_INDEX)
+#%% test
 
 parsed = parse_ids_minimal("⿰氵毎")
 ids_to_positioned_components(parsed)
+
+#%%
+tree = resolve_kanji_tree("海", KANJI_DB)
+from pprint import pprint
+pprint(tree)
 #%% TEST
 unihan_data = parse_unihan_cjkvi(path)
 parsed = parse_ids_minimal(unihan_data["海"]["ids"])
