@@ -308,7 +308,7 @@ def resolve_kanji_tree(char, kanji_db, visited=None):
     
     visited.add(char)
 
-    entry = kani_db.get(char)
+    entry = kanji_db.get(char)
 
     #character not found in database or already atomic
     if entry is None or not entry['components']:
@@ -318,7 +318,7 @@ def resolve_kanji_tree(char, kanji_db, visited=None):
     for component in entry['components']:
         child_char = component['component']
         subtree = resolve_kanji_tree(child_char, kanji_db, visited)
-        children.append()
+        children.append(subtree)
 
         return {
             'char': char,
@@ -378,10 +378,6 @@ def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, 
         node['children'].append(subtree)
 
     return node
-        #%%
-tree = resolve_kanji_tree("海", KANJI_DB)
-from pprint import pprint
-pprint(tree)
 #%%
 if __name__ == "__main__":
     path = Path("../data/Unihan_CJKVI_database.txt")
@@ -396,10 +392,15 @@ if __name__ == "__main__":
     KANGXI_RADICALS = index_kangxi_radicals(KANGXI_RADICALS_LIST)
     VARIANT_INDEX = build_variant_index(KANGXI_RADICALS)
     RADICAL_DB = build_radical_dict(KANJI_DB, KANGXI_RADICALS, VARIANT_INDEX)
-#%%
+#%% test
 
 parsed = parse_ids_minimal("⿰氵毎")
 ids_to_positioned_components(parsed)
+
+#%%
+tree = resolve_kanji_tree("海", KANJI_DB)
+from pprint import pprint
+pprint(tree)
 #%% TEST
 unihan_data = parse_unihan_cjkvi(path)
 parsed = parse_ids_minimal(unihan_data["海"]["ids"])
