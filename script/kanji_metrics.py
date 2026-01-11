@@ -55,3 +55,22 @@ def tree_size(node):
     int
         Total number of nodes in the tree.
     """
+
+def leaf_count(node):
+    """
+    Count the number of leaf nodes in a kanji decomposition tree.
+    
+    A leaf node is defined as a node with no children
+    (i.e. an atomic component).
+    
+    Parameters
+    ----------
+    node : dict
+        A node of a kanji decomposition tree.
+    
+    Returns
+    -------
+    int
+        Number of leaf nodes in the tree.
+    """
+    # if the node has no children, it is a leaf
