@@ -111,3 +111,24 @@ def branching_factor(node):
     float
         Average branching factor of the tree.
     """
+def kanji_complexity_metrics(tree):
+    """
+    Centralise function which aggregates all previous function.
+    Unique entry point for API exposure.
+    
+    Compute structural complexity metrics for a kanji decomposition tree.
+
+    The metrics include depth, total size, number of leaves,
+    number of distinct radicals, and average branching factor.
+
+    Parameters
+    ----------
+    tree : dict
+        Root node of a kanji decomposition tree.
+
+    Returns
+    -------
+    dict
+        Dictionary containing the computed complexity metrics.
+    """
+
