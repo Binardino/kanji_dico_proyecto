@@ -39,3 +39,19 @@ def tree_depth(node):
        The maximum depth of the tree.
    """
     # base case: a leaf node has a depth of 1
+def tree_size(node):
+    """
+    Compute the total number of nodes in a kanji decomposition tree.
+
+    This includes the root node and all descendant nodes.
+
+    Parameters
+    ----------
+    node : dict
+        A node of a kanji decomposition tree.
+
+    Returns
+    -------
+    int
+        Total number of nodes in the tree.
+    """
