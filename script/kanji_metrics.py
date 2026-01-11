@@ -94,3 +94,20 @@ def radical_set(node, result=None):
         A set of radical characters found in the tree.
     """
 
+def branching_factor(node):
+    """
+    Compute the average branching factor of a kanji decomposition tree.
+
+    The branching factor is defined as the average number of children
+    among all non-leaf nodes.
+
+    Parameters
+    ----------
+    node : dict
+        A node of a kanji decomposition tree.
+
+    Returns
+    -------
+    float
+        Average branching factor of the tree.
+    """
