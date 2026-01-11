@@ -19,3 +19,23 @@ KANJI_DB        = resources["KANJI_DB"]
 RADICAL_DB      = resources["RADICAL_DB"]
 KANGXI_RADICALS = resources["KANGXI_RADICALS"]
 VARIANT_INDEX   = resources["VARIANT_INDEX"]
+
+def tree_depth(node):
+    """
+   Compute the maximum depth of a kanji decomposition tree.
+
+   The depth is defined as the number of levels from the current node
+   down to the deepest leaf (inclusive).
+
+   Parameters
+   ----------
+   node : dict
+       A node of a kanji decomposition tree as returned by
+       resolve_kanji_tree_enriched.
+
+   Returns
+   -------
+   int
+       The maximum depth of the tree.
+   """
+    # base case: a leaf node has a depth of 1
