@@ -74,3 +74,23 @@ def leaf_count(node):
         Number of leaf nodes in the tree.
     """
     # if the node has no children, it is a leaf
+
+def radical_set(node, result=None):
+    """
+    Collect the set of distinct radicals present in a kanji decomposition tree.
+
+    Radicals are identified using the 'is_radical' flag on each node.
+
+    Parameters
+    ----------
+    node : dict
+        A node of a kanji decomposition tree.
+    result : set, optional
+        Internal accumulator used during recursion.
+
+    Returns
+    -------
+    set[str]
+        A set of radical characters found in the tree.
+    """
+
