@@ -125,6 +125,26 @@ def branching_factor(node):
     float
         Average branching factor of the tree.
     """
+
+    # list used to store the number of children for each non-leaf node
+    nodes = []
+
+    def walk(node):
+        # only consider nodes that actually branch
+        if node['children']:
+            nodes.append(len(node['children']))
+
+        # recursively visit all children
+        for child in node['children']:
+            walk(child)
+
+    # start traversal from the root
+    walk(node)
+
+    # Compute the average branching factor
+    # Return 0 if the tree has no branching nodes
+    return sum(nodes) / len(nodes) if nodes else 0
+
 def kanji_complexity_metrics(tree):
     """
     Centralise function which aggregates all previous function.
