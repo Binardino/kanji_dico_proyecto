@@ -20,6 +20,7 @@ RADICAL_DB      = resources["RADICAL_DB"]
 KANGXI_RADICALS = resources["KANGXI_RADICALS"]
 VARIANT_INDEX   = resources["VARIANT_INDEX"]
 
+
 def tree_depth(node):
     """
    Compute the maximum depth of a kanji decomposition tree.
@@ -39,6 +40,13 @@ def tree_depth(node):
        The maximum depth of the tree.
    """
     # base case: a leaf node has a depth of 1
+    if not node['children']:
+        return 1
+
+    # if node has childre, take the maximum depth among children and add 1
+    # recursive case: 1 (current node) + maximum depth of children
+    return 1 + max(tree_depth(child) for child in node['children'])    
+
 def tree_size(node):
     """
     Compute the total number of nodes in a kanji decomposition tree.
@@ -55,6 +63,8 @@ def tree_size(node):
     int
         Total number of nodes in the tree.
     """
+    # count the current node (1) plus the size of all child subtrees
+    return 1 + sum(tree_size(child) for child in node['children'])
 
 def leaf_count(node):
     """
