@@ -74,11 +74,6 @@ def leaf_count(node):
         Number of leaf nodes in the tree.
     """
     # if the node has no children, it is a leaf
-    if not node['children']:
-        return 1
-
-    # otherwise, sum the number of leaves in all child subtrees
-    return sum(leaf_count(child) for child in node['children'])
 
 def radical_set(node, result=None):
     """
@@ -98,6 +93,20 @@ def radical_set(node, result=None):
     set[str]
         A set of radical characters found in the tree.
     """
+
+    # initialise accumulator only once (at root call)
+    if result is None:
+        result = set()
+
+    # if this node represents a radical, add it to the set
+    if node.get('is_radical'):
+        result.add(node['char'])
+
+    # recursively traverse all children
+    for child in node['children']:
+        radical_set(child, result)
+
+    return result
 
 def branching_factor(node):
     """
