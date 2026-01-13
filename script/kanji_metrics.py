@@ -195,3 +195,31 @@ def kanji_complexity_metrics(tree):
     }
 
 #%%test
+def print_kanji_tree(node, prefix='', is_last=True):
+    """
+    # choose the appropriate connector based on position among siblings
+    connector = "└─ " if is_last else "├─ "
+
+    # build the line to print for the current node
+    line = prefix + connector + node['char']
+
+    # visually mark radicals
+    if node.get('is_radical'):
+        line += ' (radical)'
+
+    print(line)
+
+    # update prefix for child nodes to maintain the tree structure
+    new_prefix = prefix + ('   ' if is_last else '│  ')
+
+    # retrieve children safely
+    children = node.get('children', [])
+
+    # recursively print all children
+    for i, child in enumerate(children):
+        print_kanji_tree(
+                        child,
+                        new_prefix,
+                        is_last=(i == len(children) - 1)
+                    )
+
