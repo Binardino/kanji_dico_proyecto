@@ -182,3 +182,16 @@ def kanji_complexity_metrics(tree):
         Dictionary containing the computed complexity metrics.
     """
 
+    # collect all distinct radicals in the tree
+    radicals = radical_set(tree)
+
+    # aggregate all structural metrics into a single dictionary
+    return {
+        'depth'         : tree_depth(tree),
+        'size'          : tree_size(tree),
+        'leaf_count'    : leaf_count(tree),
+        'radical_count' : len(radicals),
+        'branching'     : round(branching_factor(tree), 2)
+    }
+
+#%%test
