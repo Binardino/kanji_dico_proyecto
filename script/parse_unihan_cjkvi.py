@@ -333,9 +333,12 @@ def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, 
     3. position: the position of the component within its parent kanji (if applicable)
     """
 
+    # initialise the visited set on the first call
+    # this prevents infinte recursion in case of cycles
     if visited is None:
         visited = set()
 
+    # if this character was already visited, stop recursion here
     if char in visited:
         return {'char'      : char, 
                 'position'  : position,
@@ -344,17 +347,23 @@ def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, 
                 'children'  : []
                 }
     
+    # marks current charcter as visited
     visited.add(char)
 
+    # retrieve the kanji entry from the database (if it exists)
     entry      = kanji_db.get(char)
+    # extract components if available, otherwise treat as atomic
     components = entry['components'] if entry else []
 
+    # a node is a leaf if it has no components
     is_leaf = not components
 
-    #is it a radical? canonical or variant
+    # is it a radical? if in Kangxi_radical then canonical ELSE variant
+    # variants are resolved to their canonical radical form
     canonical_radical = variant_index.get(char)
     is_radical = canonical_radical in kangxi_radicals if canonical_radical else False
 
+    #create current node
     node = {
         'char'       : char,
         'position'   : position,
@@ -363,6 +372,7 @@ def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, 
         'children'   : []
     }
 
+    # recursively resolve each component
     for component in components:
         child_char = component['component']
         child_position = component['position']
@@ -375,6 +385,7 @@ def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, 
             visited, 
             position=child_position
         )
+        # attach the resolved subtree to current node
         node['children'].append(subtree)
 
     return node
