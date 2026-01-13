@@ -197,6 +197,20 @@ def kanji_complexity_metrics(tree):
 #%%test
 def print_kanji_tree(node, prefix='', is_last=True):
     """
+    Print an ASCII visualisation of a kanji decomposition tree.
+
+    This function is intended for debugging and exploration purposes.
+    It does not modify the tree.
+
+    Parameters
+    ----------
+    node : dict
+        A node of a kanji decomposition tree.
+    prefix : str, optional
+        Prefix used internally to control indentation.
+    is_last : bool, optional
+        Whether the node is the last child of its parent.
+    """
     # choose the appropriate connector based on position among siblings
     connector = "└─ " if is_last else "├─ "
 
