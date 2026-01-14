@@ -287,3 +287,32 @@ def percentile_normalise(values):
     
     return score
 
+def normalise_metrics(metrics):
+    """
+    Normalise all metrics using percentile ranks
+    """
+    # retrieve the list of metric keys from the first entry
+    keys = metrics[next(iter(metrics))].keys()
+    
+    # build global distributions for each metric
+    distributions = {
+        key : metric_distribution(metrics, key)
+        for key in keys
+        }
+    # create a normalisation function for each metric
+    normalisers = {
+        key : percentile_normalise(distributions[key])
+        for key in keys
+        }
+    
+    normalised = {}
+    
+    # normalise each kanji's metrics
+    for kanji, data in metrics.items():
+        normalised[kanji] = {
+            key : round(normalisers[key](value), 3)
+            for key, value in data.items()
+            }
+        
+    return normalised
+
