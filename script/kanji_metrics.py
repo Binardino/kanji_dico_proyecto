@@ -262,3 +262,16 @@ def compute_all_kanji_metrics(kanji_db, variant_index, kangxi_radicals):
             print(f'[Warning] Falied to compute metrics for {kanji} : {e}')
 
     return metrics            
+def metric_distribution(metrics, key):
+    """
+    Extract a list of values for a given metric key
+    """
+    # extract all values corresponding to a given metric key
+    return [v[key] for v in metrics.values() if key in v]
+
+depths = metric_distribution(KANJI_METRICS, "depth")
+sizes  = metric_distribution(KANJI_METRICS, "size")
+#print min, max, outliers
+print("Depth:", min(depths), max(depths))
+print("Size:", min(sizes), max(sizes))
+
