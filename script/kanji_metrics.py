@@ -274,4 +274,16 @@ sizes  = metric_distribution(KANJI_METRICS, "size")
 #print min, max, outliers
 print("Depth:", min(depths), max(depths))
 print("Size:", min(sizes), max(sizes))
+def percentile_normalise(values):
+    """
+    Convert a list of values into normalised  percentile ranks [0,1]
+    """
+    # sort values once for percentile computation
+    sorted_vals = np.sort(values)
+    
+    def score(val):
+        # compute percentile rank in [0, 1]
+        return np.searchsorted(sorted_vals, val, side='right') / len(sorted_vals)
+    
+    return score
 
