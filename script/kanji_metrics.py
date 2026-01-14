@@ -237,3 +237,28 @@ def print_kanji_tree(node, prefix='', is_last=True):
                         is_last=(i == len(children) - 1)
                     )
 
+#%%
+def compute_all_kanji_metrics(kanji_db, variant_index, kangxi_radicals):
+    """
+    Compute complexity metrics for all kanji in the database
+    """
+    
+    metrics = {}
+    
+    for kanji in kanji_db:
+        try:
+            #build the enriched decomposition tree
+            tree = resolve_kanji_tree_enriched(
+                                            kanji,
+                                            kanji_db,
+                                            variant_index,
+                                            kangxi_radicals
+                                            )
+            
+            metrics[kanji] = kanji_complexity_metrics(tree)
+            
+        except Exception as e:
+            #safety net: skip problematic kanji
+            print(f'[Warning] Falied to compute metrics for {kanji} : {e}')
+
+    return metrics            
