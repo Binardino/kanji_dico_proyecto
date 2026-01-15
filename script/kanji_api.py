@@ -16,3 +16,18 @@ RESOURCES = load_kanji_resources(
                 Path("../data/Unihan_CJKVI_database.txt"),
                 Path("../data/kangxi_radicals.json")
             )
+
+KANJI_DB        = RESOURCES["KANJI_DB"]
+RADICAL_DB      = RESOURCES["RADICAL_DB"]
+KANGXI_RADICALS = RESOURCES["KANGXI_RADICALS"]
+VARIANT_INDEX   = RESOURCES["VARIANT_INDEX"]
+
+#%%
+#Public API functions
+
+def kanji_exists(kanji):
+    """
+    Check whether a kanji exists in the DB
+    """
+
+    return kanji in KANJI_DB
