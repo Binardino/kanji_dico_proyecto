@@ -31,3 +31,9 @@ def kanji_exists(kanji):
     """
 
     return kanji in KANJI_DB
+
+def radical_exists(radical):
+    """
+    Check whether a radical (or its variant) exists in the database.
+    """
+    return radical in RADICAL_DB or radical in VARIANT_INDEX
