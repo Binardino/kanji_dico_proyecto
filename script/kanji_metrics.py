@@ -313,6 +313,17 @@ def get_data_path(filename):
     return Path(__file__).resolve().parent.parent / "data" / filename
 
 def main():
+    """
+    Entry point for running kanji complexity analysis as a standalone script.
+
+    This function is intended for debugging, exploration, and sanity checks.
+    It loads all kanji resources, computes complexity metrics for the full
+    dataset, and prints sample results.
+
+    This function is not part of the public API and is only executed when
+    the module is run directly.
+    """
+
     logging.basicConfig(
         level  = logging.DEBBUG,
         format = '%(asctime)s | %(levelname)s | %(name)s | %(message)s' 
