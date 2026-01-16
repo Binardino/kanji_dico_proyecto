@@ -333,9 +333,12 @@ def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, 
     3. position: the position of the component within its parent kanji (if applicable)
     """
 
+    # initialise the visited set on the first call
+    # this prevents infinte recursion in case of cycles
     if visited is None:
         visited = set()
 
+    # if this character was already visited, stop recursion here
     if char in visited:
         return {'char'      : char, 
                 'position'  : position,
@@ -344,17 +347,23 @@ def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, 
                 'children'  : []
                 }
     
+    # marks current charcter as visited
     visited.add(char)
 
+    # retrieve the kanji entry from the database (if it exists)
     entry      = kanji_db.get(char)
+    # extract components if available, otherwise treat as atomic
     components = entry['components'] if entry else []
 
+    # a node is a leaf if it has no components
     is_leaf = not components
 
-    #is it a radical? canonical or variant
+    # is it a radical? if in Kangxi_radical then canonical ELSE variant
+    # variants are resolved to their canonical radical form
     canonical_radical = variant_index.get(char)
     is_radical = canonical_radical in kangxi_radicals if canonical_radical else False
 
+    #create current node
     node = {
         'char'       : char,
         'position'   : position,
@@ -363,6 +372,7 @@ def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, 
         'children'   : []
     }
 
+    # recursively resolve each component
     for component in components:
         child_char = component['component']
         child_position = component['position']
@@ -375,23 +385,40 @@ def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, 
             visited, 
             position=child_position
         )
+        # attach the resolved subtree to current node
         node['children'].append(subtree)
 
     return node
 #%%
-if __name__ == "__main__":
-    path = Path("../data/Unihan_CJKVI_database.txt")
-    raw_cjkvi_data = parse_unihan_cjkvi(path)
-    for char, ids in raw_cjkvi_data.items():
-        print(f"Parsed {char}: {ids}")
-
+def load_kanji_resources(unihan_path, kangxi_path):
+    """load and build all core kanji dictionaries"""
+    
+    raw_cjkvi_data = parse_unihan_cjkvi(unihan_path)
     KANJI_DB = normalise_unihan_dict(raw_cjkvi_data)
+
     with open('../data/kangxi_radicals.json', 'r', encoding='utf-8') as f:
         KANGXI_RADICALS_LIST = json.load(f)
 
     KANGXI_RADICALS = index_kangxi_radicals(KANGXI_RADICALS_LIST)
-    VARIANT_INDEX = build_variant_index(KANGXI_RADICALS)
-    RADICAL_DB = build_radical_dict(KANJI_DB, KANGXI_RADICALS, VARIANT_INDEX)
+    VARIANT_INDEX   = build_variant_index(KANGXI_RADICALS)
+    RADICAL_DB      = build_radical_dict(KANJI_DB, KANGXI_RADICALS, VARIANT_INDEX)
+    
+    return {
+        'KANJI_DB'        : KANJI_DB,
+        'RADICAL_DB'      : RADICAL_DB,
+        'KANGXI_RADICALS' : KANGXI_RADICALS,
+        'VARIANT_INDEX'   : VARIANT_INDEX
+        }
+    
+#%%
+if __name__ == "__main__":
+    resources = load_kanji_resources(
+        Path("../data/Unihan_CJKVI_database.txt"),
+        Path("../data/kangxi_radicals.json")
+    )
+
+    print("Loaded", len(resources["KANJI_DB"]), "kanji")
+
 #%% test
 
 parsed = parse_ids_minimal("⿰氵毎")
