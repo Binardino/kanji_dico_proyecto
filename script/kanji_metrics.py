@@ -306,6 +306,12 @@ def normalise_metrics(metrics):
     return normalised
 
 #%%
+def get_data_path(filename):
+    """
+    Return the absolute path to a data file shipped with the package.
+    """
+    return Path(__file__).resolve().parent.parent / "data" / filename
+
 def main():
     logging.basicConfig(
         level  = logging.DEBBUG,
@@ -318,9 +324,10 @@ def main():
 
     
     resources = load_kanji_resources(
-        Path("../data/Unihan_CJKVI_database.txt"),
-        Path("../data/kangxi_radicals.json")
-    )
+    get_data_path("Unihan_CJKVI_database.txt"),
+    get_data_path("kangxi_radicals.json")
+                    )
+
 
     logger.info('Resources loaded')
     logger.info(f'Total kanji {len(resources['KANJI_DB'])}')
