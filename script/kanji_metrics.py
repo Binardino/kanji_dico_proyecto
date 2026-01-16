@@ -1,5 +1,6 @@
 from pathlib import Path
 import numpy as np
+import logging
 from parse_unihan_cjkvi import (
     parse_unihan_cjkvi,
     normalise_unihan_dict,
@@ -9,18 +10,6 @@ from parse_unihan_cjkvi import (
     resolve_kanji_tree_enriched,
     load_kanji_resources
 )
-
-
-resources = load_kanji_resources(
-    Path("../data/Unihan_CJKVI_database.txt"),
-    Path("../data/kangxi_radicals.json")
-)
-
-KANJI_DB        = resources["KANJI_DB"]
-RADICAL_DB      = resources["RADICAL_DB"]
-KANGXI_RADICALS = resources["KANGXI_RADICALS"]
-VARIANT_INDEX   = resources["VARIANT_INDEX"]
-
 
 def tree_depth(node):
     """
@@ -316,3 +305,47 @@ def normalise_metrics(metrics):
         
     return normalised
 
+#%%
+def main():
+    logging.basicConfig(
+        level  = logging.DEBBUG,
+        format = '%(asctime)s | %(levelname)s | %(name)s | %(message)s' 
+    )
+
+    logger = logging.getLogger('kanji_metrics')
+
+    logger.info('Starting kanji metrics analysis')
+
+    
+    resources = load_kanji_resources(
+        Path("../data/Unihan_CJKVI_database.txt"),
+        Path("../data/kangxi_radicals.json")
+    )
+
+    logger.info('Resources loaded')
+    logger.info(f'Total kanji {len(resources['KANJI_DB'])}')
+
+    logger.info('Computing complexity metrics for all kanji')
+
+    metrics = compute_all_kanji_metrics(
+        resources['KANJI_DB'],
+        resources['VARIANT_INDEX'],
+        resources['KANGXI_RADICALS']
+    )
+
+    logger.info(f'Metrics computed for {len(metrics)} kanji')
+
+    sample = "海"
+    
+    logger.info(f'Inspecting sample kanji: {sample}')
+
+    logger.info(f'Metrics: {metrics.get(sample)}')
+
+    KANJI_DB        = resources["KANJI_DB"]
+    RADICAL_DB      = resources["RADICAL_DB"]
+    KANGXI_RADICALS = resources["KANGXI_RADICALS"]
+    VARIANT_INDEX   = resources["VARIANT_INDEX"]
+
+
+if __name__ == 'main':
+    main()
