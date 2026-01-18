@@ -64,3 +64,19 @@ def get_kanji_metrics(kanji):
         return None
     
     return kanji_complexity_metrics(tree)
+
+def get_kanji_by_radical(radical):
+    """
+    Return all kanji using a given radical (canonical or variant)
+    """
+    logger.debug(f'Requesting kanji for radical : {radical}')
+
+    #resolve variant to canonical radical if needed
+    canonical = VARIANT_INDEX.get(radical, radical)
+
+    if canonical not in RADICAL_DB:
+        logger.warning(f'Radical not found for radical {radical}')
+        return []
+    
+    #return the list of all kanji using this radical
+    return list(RADICAL_DB[canonical]['kanji'].keys())
