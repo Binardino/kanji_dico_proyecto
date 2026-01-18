@@ -37,3 +37,19 @@ def radical_exists(radical):
     Check whether a radical (or its variant) exists in the database.
     """
     return radical in RADICAL_DB or radical in VARIANT_INDEX
+
+def get_kanji_tree(kanji):
+    """
+    Return full enriched decomposition tree of a kanji
+    """
+    logger.debug("Requesting kanji tree for: %s", kanji)
+
+    if kanji not in KANJI_DB:
+        logger.warning(f'Kanji not found : {Kanji}')
+        return None
+    
+    return resolve_kanji_tree_enriched(kanji,
+                                       KANJI_DB,
+                                       VARIANT_INDEX,
+                                       KANGXI_RADICALS)
+
