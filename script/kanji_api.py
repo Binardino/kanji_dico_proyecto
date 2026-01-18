@@ -53,3 +53,14 @@ def get_kanji_tree(kanji):
                                        VARIANT_INDEX,
                                        KANGXI_RADICALS)
 
+def get_kanji_metrics(kanji):
+    """
+    Return structural complexity metrics of a kanji
+    """
+    logger.debug(f'Requesting metrics for kanji : {kanji}')
+
+    tree = get_kanji_tree(kanji)
+    if tree is None:
+        return None
+    
+    return kanji_complexity_metrics(tree)
