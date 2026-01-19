@@ -80,3 +80,16 @@ def get_kanji_by_radical(radical):
     
     #return the list of all kanji using this radical
     return list(RADICAL_DB[canonical]['kanji'].keys())
+
+def get_radical_info(radical):
+    """
+    Return metadata and kanji list for a radical
+    """
+    canonical = VARIANT_INDEX.get(radical, radical)
+
+    if canonical not in RADICAL_DB:
+        logger.warning(f'Radical not found for radical {radical}')
+        return None
+    
+    return RADICAL_DB[radical]
+
