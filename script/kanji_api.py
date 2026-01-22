@@ -1,0 +1,95 @@
+import logging
+from pathlib import Path
+
+#import core loading & computation utilities
+from parse_unihan_cjkvi import load_kanji_resources
+from kanji_metrics import kanji_complexity_metrics
+
+#import tree resolution - internal use
+from parse_unihan_cjkvi import resolve_kanji_tree_enriched
+
+#logger setup
+logger = logging.getLogger('kanji_api')
+
+#load resources
+RESOURCES = load_kanji_resources(
+                Path("../data/Unihan_CJKVI_database.txt"),
+                Path("../data/kangxi_radicals.json")
+            )
+
+KANJI_DB        = RESOURCES["KANJI_DB"]
+RADICAL_DB      = RESOURCES["RADICAL_DB"]
+KANGXI_RADICALS = RESOURCES["KANGXI_RADICALS"]
+VARIANT_INDEX   = RESOURCES["VARIANT_INDEX"]
+
+#%%
+#Public API functions
+
+def kanji_exists(kanji):
+    """
+    Check whether a kanji exists in the DB
+    """
+
+    return kanji in KANJI_DB
+
+def radical_exists(radical):
+    """
+    Check whether a radical (or its variant) exists in the database.
+    """
+    return radical in RADICAL_DB or radical in VARIANT_INDEX
+
+def get_kanji_tree(kanji):
+    """
+    Return full enriched decomposition tree of a kanji
+    """
+    logger.debug("Requesting kanji tree for: %s", kanji)
+
+    if kanji not in KANJI_DB:
+        logger.warning(f'Kanji not found : {Kanji}')
+        return None
+    
+    return resolve_kanji_tree_enriched(kanji,
+                                       KANJI_DB,
+                                       VARIANT_INDEX,
+                                       KANGXI_RADICALS)
+
+def get_kanji_metrics(kanji):
+    """
+    Return structural complexity metrics of a kanji
+    """
+    logger.debug(f'Requesting metrics for kanji : {kanji}')
+
+    tree = get_kanji_tree(kanji)
+    if tree is None:
+        return None
+    
+    return kanji_complexity_metrics(tree)
+
+def get_kanji_by_radical(radical):
+    """
+    Return all kanji using a given radical (canonical or variant)
+    """
+    logger.debug(f'Requesting kanji for radical : {radical}')
+
+    #resolve variant to canonical radical if needed
+    canonical = VARIANT_INDEX.get(radical, radical)
+
+    if canonical not in RADICAL_DB:
+        logger.warning(f'Radical not found for radical {radical}')
+        return []
+    
+    #return the list of all kanji using this radical
+    return list(RADICAL_DB[canonical]['kanji'].keys())
+
+def get_radical_info(radical):
+    """
+    Return metadata and kanji list for a radical
+    """
+    canonical = VARIANT_INDEX.get(radical, radical)
+
+    if canonical not in RADICAL_DB:
+        logger.warning(f'Radical not found for radical {radical}')
+        return None
+    
+    return RADICAL_DB[radical]
+
