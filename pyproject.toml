@@ -1,0 +1,27 @@
+[project]
+name = "kanjidb"
+version = "0.1.0"
+description = "kanji decomposition engine with complexity metrics and API endpoints"
+authors = [
+    { name = "Binardino", email = "langlois.robin@gmail.com" }
+]
+readme = "README.md"
+requires-python = "^3.10"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.2,<10.0.0)"
+]
+
+[tool.poetry]
+packages = [{ include = "kanjidb" }]
+
+include = [
+    "kanjidb/data/*.txt",
+    "kanjidb/data/*.json"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
