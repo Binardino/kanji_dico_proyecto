@@ -7,6 +7,19 @@ https://semver.org/
 
 ---
 
+## [0.2.0] – Infrastructure refactor
+
+### Changed
+- Reorganized repository structure using src-layout
+- Fixed Poetry packaging configuration
+- Introduced canonical data paths
+- Refactored Unihan build pipeline
+- Project is now fully installable and module-executable
+
+### Notes
+This release focuses on infrastructure and internal architecture.
+No public API is exposed yet.
+
 ## [0.1.0] – Initial Release
 
 ### Added
