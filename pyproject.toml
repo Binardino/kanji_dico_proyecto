@@ -1,6 +1,6 @@
 [project]
 name = "kanjidb"
-version = "0.1.0"
+version = "0.2.0"
 description = "kanji decomposition engine with complexity metrics and API endpoints"
 authors = [
     { name = "Binardino", email = "langlois.robin@gmail.com" }
