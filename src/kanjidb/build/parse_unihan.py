@@ -1,6 +1,6 @@
-from pathlib import Path
 import re
 import json
+from pathlib import Path
 
 IDS_OPERATORS        = ("⿰", "⿱", "⿴", "⿵", "⿶","⿷", "⿸", "⿹", "⿺", "⿻")
 
@@ -390,13 +390,13 @@ def resolve_kanji_tree_enriched(char, kanji_db, variant_index, kangxi_radicals, 
 
     return node
 #%%
-def load_kanji_resources(unihan_path, kangxi_path):
+def load_kanji_resources(unihan_path: Path, kangxi_path: Path):
     """load and build all core kanji dictionaries"""
     
     raw_cjkvi_data = parse_unihan_cjkvi(unihan_path)
     KANJI_DB = normalise_unihan_dict(raw_cjkvi_data)
 
-    with open('../data/kangxi_radicals.json', 'r', encoding='utf-8') as f:
+    with open(kangxi_path, 'r', encoding='utf-8') as f:
         KANGXI_RADICALS_LIST = json.load(f)
 
     KANGXI_RADICALS = index_kangxi_radicals(KANGXI_RADICALS_LIST)
@@ -412,36 +412,11 @@ def load_kanji_resources(unihan_path, kangxi_path):
     
 #%%
 if __name__ == "__main__":
+    from kanjidb.utils.paths import UNIHAN_CJKVI, KANGXI_RADICALS_JSON
+
     resources = load_kanji_resources(
-        Path("../data/Unihan_CJKVI_database.txt"),
-        Path("../data/kangxi_radicals.json")
+        unihan_path=UNIHAN_CJKVI,
+        kangxi_path=KANGXI_RADICALS_JSON,
     )
 
     print("Loaded", len(resources["KANJI_DB"]), "kanji")
-
-#%% test
-
-parsed = parse_ids_minimal("⿰氵毎")
-ids_to_positioned_components(parsed)
-
-#%%
-tree = resolve_kanji_tree("海", KANJI_DB)
-from pprint import pprint
-pprint(tree)
-#%% TEST
-unihan_data = parse_unihan_cjkvi(path)
-parsed = parse_ids_minimal(unihan_data["海"]["ids"])
-
-# 3. Interprétation en positions
-components = ids_to_positioned_components(parsed)
-#%%
-ids = unihan_data["海"]["ids"]
-parsed = parse_ids_minimal(ids)
-
-if parsed is None:
-    print("IDS non supporté :", repr(ids), "len =", len(ids))
-    
-ids = unihan_data["海"]["ids"]
-print(ids, len(ids), [c for c in ids])
-
-            
