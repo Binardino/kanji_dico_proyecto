@@ -63,3 +63,14 @@ class IDSNode:
             "left"     : self.left.to_dict() if self.left else None,
             "right"    : self.right.to_dict() if self.right else None
         }
+@dataclass(slots=True)
+class KanjiStats:
+    """
+    Statistics related to a Kanji character.
+    """
+
+    component_count : int
+    depth           : int
+    radical_count   : int
+    difficulty      : float
+
