@@ -35,6 +35,19 @@ class IDSNode:
             self.left.depth() if self.left else 0,
             self.right.depth() if self.right else 0
         )
-        left_depth = self.left.depth() if self.left else 0
-        right_depth = self.right.depth() if self.right else 0
-        return 1 + max(left_depth, right_depth)
+    
+    def components(self) -> List[IDSNode]:
+        """
+        Get a list of all components (leaf nodes) in the IDS tree.
+        """
+        if self.is_leaf:
+            return [self.value] if self.value else []
+        
+        components: List[str] = []
+        if self.left:
+            components.extend(self.left.components())
+        if self.right:
+            components.extend(self.right.components())
+        
+        return components
+    
