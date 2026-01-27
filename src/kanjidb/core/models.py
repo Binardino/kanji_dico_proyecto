@@ -51,3 +51,15 @@ class IDSNode:
         
         return components
     
+    def to_dict(self) -> dict:
+        """
+        Convert the IDSNode to a dictionary representation.
+        """
+        if self.is_leaf:
+            return {"value": self.value}
+        
+        return {
+            "operator" : self.operator,
+            "left"     : self.left.to_dict() if self.left else None,
+            "right"    : self.right.to_dict() if self.right else None
+        }
