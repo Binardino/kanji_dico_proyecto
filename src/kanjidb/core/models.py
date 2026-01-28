@@ -149,3 +149,13 @@ class Kanji:
         )
 
         return kanji
+    
+    def to_dict(self) -> dict:
+        return {
+            "literal"   : self.literal,
+            "codepoint" : self.codepoint,
+            "ids"       : self.ids,
+            "radicals"  : self.radicals,
+            "stats"     : self.stats.__dict__ if self.stats else None,
+            "ids_tree"  : self.ids_tree.to_dict() if self.ids_tree else None,
+        }
