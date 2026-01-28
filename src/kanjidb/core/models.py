@@ -111,3 +111,41 @@ class KanjiStats:
             radical_count=radical_count,
             difficulty=round(difficulty, 3)
     )
+
+@dataclass(slots=True)
+class Kanji:
+    """
+    """
+    literal   : str
+    codepoint : str
+
+    ids      :  Optional[str]    = None
+    ids_tree : Optional[IdsNode] = None
+
+    radicals : Optional[List[str]]  = None
+    stats    : Optional[KanjiStats] = None
+
+    @classmethod
+    def from_unihan(
+        cls,
+        literal   : str,
+        codepoint : str,
+        ids       : Optional[str],
+        ids_tree  : Optional[IDSNode],
+        radicals  : Optional[List[str]] = None 
+    ) -> "Kanji":
+        
+        kanji = cls(
+            literal=literal,
+            codepoint=codepoint,
+            ids=ids,
+            ids_tree=ids_tree,
+            radicals=radicals or [],
+        )
+
+        kanji.stats = KanjiStats.compute(
+            ids_root=ids_tree,
+            radicals=kanji.radicals,
+        )
+
+        return kanji
