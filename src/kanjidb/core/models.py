@@ -67,7 +67,25 @@ class IDSNode:
 @dataclass(slots=True)
 class KanjiStats:
     """
-    Statistics related to a Kanji character.
+    Computed statistics derived from a Kanji's structural representation.
+
+    This class does not represent intrinsic properties of a kanji, but
+    *interpretations* based on its IDS structure and associated metadata.
+
+    KanjiStats is intentionally separated from the Kanji model to allow:
+    - multiple scoring models (pedagogical, RPG, linguistic, etc.)
+    - recalculation without mutating core data
+    - experimentation with heuristics over time
+
+    All values are derived and can be recomputed at any moment.
+
+    Basic statistics include:
+    - component_count : total number of atomic components in the IDS tree
+    - depth           : maximum depth of the IDS tree
+    - radical_count   : number of distinct radicals associated with the kanji
+    - difficulty      : Normalized difficulty score in the range [0.0, 1.0].
+                        This value is heuristic-based and combines structural depth,
+                        component count, and radical information.
     """
 
     component_count : int
