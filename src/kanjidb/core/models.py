@@ -133,6 +133,30 @@ class KanjiStats:
 @dataclass(slots=True)
 class Kanji:
     """
+    Domain model representing a single Kanji character.
+
+    This class acts as the aggregate root for all data related to a kanji:
+    - its literal form
+    - Unicode identity
+    - IDS structural description
+    - radicals
+    - derived statistics
+
+    The Kanji model contains only factual or structurally derived information.
+    Interpretation and scoring are delegated to KanjiStats.
+
+    Basic attributes includes :
+    - literal   : the kanji character itself  (e.g. '漢')
+    - codepoint : Unicode codepoint in U+XXXX format (e.g. 'U+6F22')
+    - ids       : Raw IDS string representation as found in source data. (e.g. '⿰氵)
+                  Stored for traceability and debugging purposes.
+    - ids_tree  : Parsed IDS tree structure (IDSNode) - structural composition of the kanji.
+                  This structure enables recursive analysis, visualization, and scoring.
+    - radicals  : List of associated radicals (by their literal form).  
+                  Typically Kangxi radicals, but extensible to other systems.
+    - stats     : Derived statistics computed from the IDS structure.
+                  Computed KanjiStats instance containing derived statistics.
+                  Can be recalculated at any time using KanjiStats.compute().
     """
     literal   : str
     codepoint : str
