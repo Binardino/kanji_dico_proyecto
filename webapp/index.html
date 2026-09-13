@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanji Deconstructor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <label for="kanjiInput" class="topbar-label">漢字</label>
+    <input
+      type="text"
+      id="kanjiInput"
+      list="kanjiOptions"
+      placeholder="Entre un kanji…"
+      maxlength="1"
+      autocomplete="off"
+    />
+    <datalist id="kanjiOptions"></datalist>
+
+    <div class="quick-picks" id="quickPicks" aria-label="Kanji d'exemple"></div>
+  </header>
+
+  <main id="app" hidden>
+    <section class="info-panel" id="infoPanel">
+      <div class="info-panel-literal" id="infoLiteral"></div>
+
+      <dl class="info-panel-facts">
+        <div>
+          <dt>On&apos;yomi</dt>
+          <dd id="infoOn">—</dd>
+        </div>
+        <div>
+          <dt>Kun&apos;yomi</dt>
+          <dd id="infoKun">—</dd>
+        </div>
+        <div>
+          <dt>Sens</dt>
+          <dd id="infoMeanings">—</dd>
+        </div>
+        <div>
+          <dt>JLPT</dt>
+          <dd id="infoJlpt">—</dd>
+        </div>
+        <div>
+          <dt>Grade</dt>
+          <dd id="infoGrade">—</dd>
+        </div>
+        <div>
+          <dt>Traits</dt>
+          <dd id="infoStrokes">—</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="scrolly" id="deconstruction" hidden>
+      <div class="scrolly-graphic" id="stage">
+        <div class="node-detail" id="nodeDetail" hidden></div>
+      </div>
+      <div class="scrolly-steps" id="steps"></div>
+      <nav class="depth-nav" id="depthNav" aria-label="Niveaux de décomposition"></nav>
+    </section>
+
+    <p class="atomic-note" id="atomicNote" hidden>
+      Ce kanji est atomique : il n'a pas de décomposition en composants.
+    </p>
+  </main>
+
+  <p class="empty-state" id="emptyState">Choisis un kanji pour commencer.</p>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
